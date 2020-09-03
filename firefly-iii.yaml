@@ -82,6 +82,8 @@ spec:
             secretKeyRef:
               name: firefly-iii-secrets
               key: db_password
+        - name: TRUSTED_PROXIES
+          value: "**"
         ports:
         - containerPort: 8080
           name: firefly-iii
