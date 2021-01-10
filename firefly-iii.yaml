@@ -38,7 +38,7 @@ spec:
   resources:
     requests:
       storage: 20Gi
---- 
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
