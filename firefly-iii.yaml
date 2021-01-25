@@ -11,7 +11,7 @@ spec:
   selector:
     app: firefly-iii
     tier: frontend
-  type: LoadBalancer
+  type: NodePort
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
