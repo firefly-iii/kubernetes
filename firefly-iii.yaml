@@ -1,3 +1,5 @@
+# Service to expose Firefly-III on port 80
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,20 +14,9 @@ spec:
     app: firefly-iii
     tier: frontend
   type: NodePort
+
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: firefly-iii-export-claim
-  labels:
-    app: firefly-iii
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
----
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -38,7 +29,9 @@ spec:
   resources:
     requests:
       storage: 20Gi
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -88,15 +81,10 @@ spec:
         - containerPort: 8080
           name: firefly-iii
         volumeMounts:
-        - mountPath: "/var/www/firefly-iii/storage/export"
-          name: firefly-iii-export
         - mountPath: "/var/www/firefly-iii/storage/upload"
           name: firefly-iii-upload 
         imagePullPolicy: Always
       volumes:
-        - name: firefly-iii-export
-          persistentVolumeClaim:
-            claimName: firefly-iii-export-claim
         - name: firefly-iii-upload
           persistentVolumeClaim:
             claimName: firefly-iii-upload-claim
