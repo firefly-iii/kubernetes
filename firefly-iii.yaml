@@ -81,7 +81,7 @@ spec:
         - containerPort: 8080
           name: firefly-iii
         volumeMounts:
-        - mountPath: "/var/www/firefly-iii/storage/upload"
+        - mountPath: "/var/www/html/firefly-iii/storage/upload"
           name: firefly-iii-upload 
         imagePullPolicy: Always
       volumes:
