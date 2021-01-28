@@ -1,3 +1,6 @@
+# Service to expose Firefly-III on an available port in Kubernetes cluster
+# Assigned port can be seen with `kubectl get services firefly-iii`
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -5,27 +8,16 @@ metadata:
   labels:
     app: firefly-iii
 spec:
+  type: NodePort
   ports:
     - port: 80
       targetPort: 8080
   selector:
     app: firefly-iii
     tier: frontend
-  type: LoadBalancer
+
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: firefly-iii-export-claim
-  labels:
-    app: firefly-iii
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
----
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -38,7 +30,9 @@ spec:
   resources:
     requests:
       storage: 20Gi
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -88,15 +82,10 @@ spec:
         - containerPort: 8080
           name: firefly-iii
         volumeMounts:
-        - mountPath: "/var/www/firefly-iii/storage/export"
-          name: firefly-iii-export
-        - mountPath: "/var/www/firefly-iii/storage/upload"
+        - mountPath: "/var/www/html/firefly-iii/storage/upload"
           name: firefly-iii-upload 
         imagePullPolicy: Always
       volumes:
-        - name: firefly-iii-export
-          persistentVolumeClaim:
-            claimName: firefly-iii-export-claim
         - name: firefly-iii-upload
           persistentVolumeClaim:
             claimName: firefly-iii-upload-claim
