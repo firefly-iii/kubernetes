@@ -1,4 +1,5 @@
-# Service to expose Firefly-III on port 80
+# Service to expose Firefly-III on an available port in Kubernetes cluster
+# Assigned port can be seen with `kubectl get services firefly-iii`
 
 apiVersion: v1
 kind: Service
@@ -7,13 +8,13 @@ metadata:
   labels:
     app: firefly-iii
 spec:
+  type: NodePort
   ports:
     - port: 80
       targetPort: 8080
   selector:
     app: firefly-iii
     tier: frontend
-  type: NodePort
 
 ---
 
