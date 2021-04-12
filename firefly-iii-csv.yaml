@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: firefly-iii-csv
+  labels:
+    app: firefly-iii-csv
+spec:
+  clusterIP: None
+  ports:
+    - port: 8080
+  selector:
+    app: firefly-iii-csv
+    tier: frontend
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firefly-iii-csv
+  labels:
+    app: firefly-iii-csv
+spec:
+  selector:
+    matchLabels:
+      app: firefly-iii-csv
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: firefly-iii-csv
+        tier: frontend
+    spec:
+      containers:
+      - image: fireflyiii/csv-importer:version-2.5.0
+        name: firefly-iii-csv
+        env:
+        - name: FIREFLY_III_ACCESS_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: firefly-iii-secrets
+              key: access_token
+        - name: FIREFLY_III_URL
+          value: "http://firefly-iii:8080"
+        - name: TRUSTED_PROXIES
+          value: "**"
+        ports:
+        - containerPort: 8080
+          name: firefly-iii
+        imagePullPolicy: Always
