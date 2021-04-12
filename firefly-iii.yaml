@@ -8,10 +8,9 @@ metadata:
   labels:
     app: firefly-iii
 spec:
-  type: NodePort
+  clusterIP: None
   ports:
-    - port: 80
-      targetPort: 8080
+    - port: 8080
   selector:
     app: firefly-iii
     tier: frontend
@@ -29,7 +28,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 10Gi
 
 ---
 
