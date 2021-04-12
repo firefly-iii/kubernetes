@@ -1,8 +1,10 @@
 resources:
   - mysql.yaml
   - firefly-iii.yaml
+  - firefly-iii-csv.yaml
 secretGenerator:
 - name: firefly-iii-secrets
   literals:
   - db_password=CHANGEMECHANGEME
   - app_key=CHANGEMECHANGEMECHANGEMECHANGEME
+  - access_token=CHANGEMECHANGEMECHANGEME...
