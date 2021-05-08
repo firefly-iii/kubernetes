@@ -15,5 +15,6 @@ Here are some links for your reading pleasure.
 
 - [Firefly III on GitHub](https://github.com/firefly-iii/firefly-iii)
 - [Documentation](https://docs.firefly-iii.org/installation/k8n)
+- [Extra instructions and information](https://github.com/creylopez/ffiiimacosk8s) for MacOS.
 
 Please open any issues you have [in the main repository](https://github.com/firefly-iii/firefly-iii).
