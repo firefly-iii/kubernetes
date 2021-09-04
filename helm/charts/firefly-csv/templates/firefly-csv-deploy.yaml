@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-csv.fullname" . }}
+  labels:
+    app: {{ template "firefly-csv.name" . }}
+    chart: {{ template "firefly-csv.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "firefly-csv.fullname" . }}
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: {{ template "firefly-csv.fullname" . }}
+        tier: frontend
+    spec:
+      containers:
+      - name: {{ template "firefly-csv.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        envFrom:
+        - configMapRef:
+            name: {{ template "firefly-csv.fullname" . }}-config
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "700m"
+        volumeMounts:
+          - name: firefly-csv-configurations
+            mountPath: "/configurations"
+            subPath: configurations
+      volumes:
+        - name: firefly-csv-configurations
+          persistentVolumeClaim:
+            claimName: {{ template "firefly-csv.fullname" . }}-pvc

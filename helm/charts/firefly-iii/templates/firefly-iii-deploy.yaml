@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-iii.fullname" . }}
+  labels:
+    app: {{ template "firefly-iii.name" . }}
+    chart: {{ template "firefly-iii.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "firefly-iii.fullname" . }}
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: {{ template "firefly-iii.fullname" . }}
+        tier: frontend
+    spec:
+      containers:
+      - name: {{ template "firefly-iii.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        envFrom:
+        - configMapRef:
+            name: {{ template "firefly-iii.fullname" . }}-config
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "300m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1200m"
+        volumeMounts:
+          - name: firefly-iii-upload
+            mountPath: "/var/www/html/firefly-iii/storage/upload"
+      volumes:
+        - name: firefly-iii-upload
+          persistentVolumeClaim:
+            claimName: {{ template "firefly-iii.fullname" . }}-pvc

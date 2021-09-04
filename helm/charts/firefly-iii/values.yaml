@@ -1,0 +1,34 @@
+image:
+  repository: "fireflyiii/core"
+  tag: version-5.5.13
+  pullPolicy: IfNotPresent
+
+storage:
+  class: nfs-client
+  accessModes: ReadWriteMany
+  dataSize: 1Gi
+
+configs:
+  DB_CONNECTION: ""
+  DB_HOST: ""
+  DB_PORT: ""
+  DB_DATABASE: ""
+  DB_USERNAME: ""
+  DB_PASSWORD: ""
+  APP_KEY: ""
+  SITE_OWNER: ""
+  DEFAULT_LANGUAGE: "de_DE"
+  DEFAULT_LOCALE: "equal"
+  TZ: "Europe/Berlin"
+  TRUSTED_PROXIES: "**"
+  MAIL_DRIVER: ""
+  MAIL_HOST: ""
+  MAIL_PORT: ""
+  MAIL_FROM: ""
+  MAIL_PASSWORD: ""
+  MAIL_ENCRYPTION: ""
+  SEND_REGISTRATION_MAIL: "false"
+  SEND_ERROR_MESSAGE: "false"
+  SEND_REPORT_JOURNALS: "false"
+
+hostName: firefly.example.io

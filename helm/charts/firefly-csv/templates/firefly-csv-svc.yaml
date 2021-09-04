@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-csv.fullname" . }}-svc
+  labels:
+    app: {{ template "firefly-csv.name" . }}
+    chart: {{ template "firefly-csv.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    app: {{ template "firefly-csv.fullname" . }}
+    tier: frontend
+  ports:
+    - protocol: TCP
+      port: 8080
