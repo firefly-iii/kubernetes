@@ -1,0 +1,8 @@
+# helm packages
+*.tgz
+
+*.local.values.yml
+*.local.values.yaml
+
+# place where I play with stuff
+tmp/
