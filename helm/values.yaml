@@ -1,4 +1,5 @@
 firefly-db:
+  # if you set this to false it will not be installed
   enabled: true
   image:
     repository: postgres
@@ -10,6 +11,7 @@ firefly-db:
     accessModes: ReadWriteMany
     dataSize: 1Gi
 
+  # environment variables
   configs:
     RESTORE_URL: ""
     BACKUP_URL: ""
@@ -23,6 +25,7 @@ firefly-db:
   backupSchedule: "0 3 * * *"
 
 firefly-iii:
+  # if you set this to false it will not be installed
   enabled: true
   image:
     repository: "fireflyiii/core"
@@ -34,6 +37,11 @@ firefly-iii:
     accessModes: ReadWriteMany
     dataSize: 1Gi
 
+  # hostname for ingress
+  hostName: firefly.example.io
+
+  # environment variables
+  # see here: https://github.com/firefly-iii/firefly-iii/blob/main/.env.example
   configs:
     DB_CONNECTION: pgsql
     DB_HOST: firefly-firefly-db
@@ -57,9 +65,8 @@ firefly-iii:
     SEND_ERROR_MESSAGE: "true"
     SEND_REPORT_JOURNALS: "true"
 
-  hostName: firefly.example.io
-
 firefly-csv:
+  # if you set this to false it will not be installed
   enabled: true
   image:
     repository: "fireflyiii/csv-importer"
@@ -71,8 +78,11 @@ firefly-csv:
     accessModes: ReadWriteMany
     dataSize: 50Mi
   
+  # hostname for ingress
   hostName: csv.example.io
-
+  
+  # environment variables
+  # see here: https://docs.firefly-iii.org/csv/install/configure/
   configs:
     FIREFLY_III_CLIENT_ID: ""
     FIREFLY_III_URL: firefly-iii-svc:8080
