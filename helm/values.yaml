@@ -1,0 +1,80 @@
+firefly-db:
+  enabled: true
+  image:
+    repository: postgres
+    tag: 10-alpine
+    pullPolicy: IfNotPresent
+
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+    dataSize: 1Gi
+
+  configs:
+    RESTORE_URL: ""
+    BACKUP_URL: ""
+    PGPASSWORD: "YOURDBPASSWORD"
+    DBHOST: firefly-firefly-db
+    DBPORT: "5432"
+    DBNAME: firefly
+    DBUSER: firefly
+    TZ: Europe/Berlin
+
+  backupSchedule: "0 3 * * *"
+
+firefly-iii:
+  enabled: true
+  image:
+    repository: "fireflyiii/core"
+    tag: version-5.5.13
+    pullPolicy: IfNotPresent
+
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+    dataSize: 1Gi
+
+  configs:
+    DB_CONNECTION: pgsql
+    DB_HOST: firefly-firefly-db
+    DB_PORT: "5432"
+    DB_DATABASE: firefly
+    DB_USERNAME: firefly
+    DB_PASSWORD: YOURDBPASSWORD
+    APP_KEY: SomeRandomStringOf32CharsExactly
+    SITE_OWNER: me@example.com
+    DEFAULT_LANGUAGE: "de_DE"
+    DEFAULT_LOCALE: "equal"
+    TZ: "Europe/Berlin"
+    TRUSTED_PROXIES: "**"
+    MAIL_DRIVER: smtp
+    MAIL_HOST: ""
+    MAIL_PORT: ""
+    MAIL_FROM: ""
+    MAIL_PASSWORD: ""
+    MAIL_ENCRYPTION: SSL
+    SEND_REGISTRATION_MAIL: "true"
+    SEND_ERROR_MESSAGE: "true"
+    SEND_REPORT_JOURNALS: "true"
+
+  hostName: firefly.example.io
+
+firefly-csv:
+  enabled: true
+  image:
+    repository: "fireflyiii/csv-importer"
+    tag: version-2.6.0
+    pullPolicy: IfNotPresent
+  
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+    dataSize: 50Mi
+  
+  hostName: csv.example.io
+
+  configs:
+    FIREFLY_III_CLIENT_ID: ""
+    FIREFLY_III_URL: firefly-iii-svc:8080
+    JSON_CONFIGURATION_DIR: "/configurations"
+    TRUSTED_PROXIES: "**"

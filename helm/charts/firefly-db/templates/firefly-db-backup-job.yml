@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-db.fullname" . }}-backup-job
+  labels:
+    app: {{ template "firefly-db.name" . }}
+    chart: {{ template "firefly-db.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+    "helm.sh/hook": pre-delete,pre-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  ttlSecondsAfterFinished: 100
+  parallelism: 1
+  completions: 1
+  template:
+    spec:
+      containers:
+      - name: {{ template "firefly-db.fullname" . }}-backup-job
+        image: alpine:3.13
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: {{ template "firefly-db.fullname" . }}-config
+        command:
+        - /bin/sh
+        - -c
+        - |
+          set -e
+          apk update
+          apk add curl
+          apk add postgresql
+          echo "creating backup file"
+          pg_dump -h $DBHOST -p $DBPORT -U $DBUSER --format=p --clean -d $DBNAME > $DBNAME.sql
+          ls -la
+          echo "uploading backup file"
+          curl -F "filename=@$(DBNAME).sql" $BACKUP_URL
+          echo "done"
+      restartPolicy: Never

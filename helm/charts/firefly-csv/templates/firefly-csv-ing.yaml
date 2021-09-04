@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-csv.fullname" . }}-ing
+  labels:
+    app: {{ template "firefly-csv.name" . }}
+    chart: {{ template "firefly-csv.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.org/client-max-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+spec:
+  rules:
+  - host: {{ .Values.hostName }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: {{ template "firefly-csv.fullname" . }}-svc
+            port:
+              number: 8080

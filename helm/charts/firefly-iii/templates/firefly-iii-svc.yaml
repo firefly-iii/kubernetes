@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-iii.fullname" . }}-svc
+  labels:
+    app: {{ template "firefly-iii.name" . }}
+    chart: {{ template "firefly-iii.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    app: {{ template "firefly-iii.fullname" . }}
+    tier: frontend
+  ports:
+    - protocol: TCP
+      port: 8080

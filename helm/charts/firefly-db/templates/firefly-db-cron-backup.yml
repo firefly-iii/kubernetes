@@ -1,0 +1,42 @@
+{{ if .Values.backupSchedule }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ template "firefly-db.fullname" . }}-backup
+  labels:
+    app: {{ template "firefly-db.name" . }}
+    chart: {{ template "firefly-db.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  schedule: "{{ .Values.backupSchedule }}"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ template "firefly-db.fullname" . }}-backup
+              image: alpine:3.13
+              imagePullPolicy: IfNotPresent
+              envFrom:
+              - configMapRef:
+                  name: {{ template "firefly-db.fullname" . }}-config
+              command:
+              - /bin/sh
+              - -c
+              - |
+                set -e
+                apk update
+                apk add curl
+                apk add postgresql
+                echo "creating backup file"
+                pg_dump -h $DBHOST -p $DBPORT -U $DBUSER --format=p --clean -d $DBNAME > $DBNAME.sql
+                ls -la
+                echo "uploading backup file"
+                curl -F "filename=@$(DBNAME).sql" $BACKUP_URL
+                echo "done"
+          restartPolicy: Never
+{{ end }}
