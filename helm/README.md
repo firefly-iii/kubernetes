@@ -8,9 +8,8 @@ Motivated by [Discussion 4778](https://github.com/firefly-iii/firefly-iii/discus
 > At the moment this chart can be seen as a reference. 
 > Please read the discussion above for detailed information
 
-
 ## Anatomy
-This chart consists of multiple subcharts, where each sub chart is optional.
+This chart consists of multiple sub charts, where each sub chart is optional.
 
 ### firefly-db
 Installs a postgres db along with backup/restore functionality.
@@ -32,14 +31,14 @@ Set everything as you need it.
 
 If you want to test things out, repeat the same procedure creating a `debug.local.values.yaml`.
 
-## Make files
+## Makefiles
 Each chart has a `Makefile` which is meant to make things easier and provides the following commands:
 
 `make`: creates the namespaces `debug`, `dryRun` and `firefly` and executes `helm package` to create a .tgz file which the other commands use to install the chart. Make sure that you execute this command after each change of the charts.
 
 `make dryRun`: tests integrety of the charts by trying to temporarily install everything into the dryRun namespace. The result yaml files will be written to console output. This uses the `values.yaml` configuration.
 
-`make installDebug`: installs firefly into the debug namespace. This is useful if you want to savefly test some changes in your configuration or want to test a firefly upgrade prior to using it in production. For this you need a `debug.local.values.yaml`
+`make installDebug`: installs firefly into the debug namespace. This is useful if you want to savely test some changes in your configuration or want to test a firefly upgrade prior to using it in production. For this you need a `debug.local.values.yaml`
 
 `make upgradeDebug`: upgrades your debug firefly instance by performing `helm upgrade`. For this you need a `debug.local.values.yaml`
 
