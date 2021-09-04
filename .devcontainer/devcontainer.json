@@ -1,0 +1,44 @@
+{
+    "name": "k8s devcontainer",
+    "dockerFile": "Dockerfile",
+    "remoteEnv": {
+        "SYNC_LOCALHOST_KUBECONFIG": "true",
+        "ANSIBLE_CONFIG": "./ansible.cfg",
+    },
+
+    "mounts": [
+        // bind local docker socket to container
+        "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+        // sync local kube config
+        "source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost,type=bind",
+        // sync certs in your .minikube folder
+        // "source=${env:HOME}${env:USERPROFILE}/.minikube,target=/usr/local/share/minikube-localhost,type=bind",
+    ],
+
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.shell.linux": "/usr/bin/zsh"
+    },
+
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "hashicorp.terraform",
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-vscode.powershell",
+        "redhat.vscode-yaml",
+        "redhat.vscode-xml",
+    ],
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // "postCreateCommand": "",
+
+    // required for vault to run
+    "runArgs": [ "--cap-add=IPC_LOCK" ],
+
+    // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+    "overrideCommand": false,
+    "remoteUser": "vscode"
+}
