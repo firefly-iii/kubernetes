@@ -1,6 +1,7 @@
 resources:
   - mysql.yaml
   - firefly-iii.yaml
+  - firefly-cron.yaml
   - firefly-iii-csv.yaml
 secretGenerator:
 - name: firefly-iii-secrets
@@ -8,3 +9,4 @@ secretGenerator:
   - db_password=CHANGEMECHANGEME
   - app_key=CHANGEMECHANGEMECHANGEMECHANGEME
   - access_token=CHANGEMECHANGEMECHANGEME...
+  - static_cron_token=CHANGE12CHAR
