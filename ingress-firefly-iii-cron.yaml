@@ -13,9 +13,9 @@ spec:
       backoffLimit: 5
       template:
         metadata:
-        labels:
-          app: firefly-iii
-          tier: cron
+          labels:
+            app: firefly-iii
+            tier: cron
         spec:
           containers:
             - name: cron
