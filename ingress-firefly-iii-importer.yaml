@@ -7,21 +7,21 @@ metadata:
     nginx.org/client-max-body-size: "0"
     nginx.org/proxy-buffer-size: "8k"
   labels:
-  name: firefly-iii-csv-ingress
+  name: firefly-iii-importer-ingress
 spec:
   rules:
-  - host: csv-firefly-iii.your-domain.org
+  - host: importer-firefly-iii.your-domain.org
     http:
       paths:
       - backend:
           service:
-            name: firefly-iii-csv
+            name: firefly-iii-importer
             port:
               number: 8080
         path: /
         pathType: Prefix
 # tls:
 #  - hosts:
-#    - csv-firefly-iii.your-domain.org
-#    secretName: csv-firefly-iii.your-domain.org-tls
+#    - importer-firefly-iii.your-domain.org
+#    secretName: importer-firefly-iii.your-domain.org-tls
 

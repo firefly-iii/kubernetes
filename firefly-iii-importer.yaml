@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: firefly-iii-csv
+  name: firefly-iii-importer
   labels:
-    app: firefly-iii-csv
+    app: firefly-iii-importer
 spec:
   clusterIP: None
   ports:
     - port: 8080
   selector:
-    app: firefly-iii-csv
+    app: firefly-iii-importer
     tier: frontend
 
 ---
@@ -17,25 +17,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: firefly-iii-csv
+  name: firefly-iii-importer
   labels:
-    app: firefly-iii-csv
+    app: firefly-iii-importer
 spec:
   selector:
     matchLabels:
-      app: firefly-iii-csv
+      app: firefly-iii-importer
       tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: firefly-iii-csv
+        app: firefly-iii-importer
         tier: frontend
     spec:
       containers:
-      - image: fireflyiii/csv-importer:version-2.5.0
-        name: firefly-iii-csv
+      - image: fireflyiii/data-importer:version-0.5.0
+        name: firefly-iii-importer
         env:
         - name: FIREFLY_III_ACCESS_TOKEN
           valueFrom:
