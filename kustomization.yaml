@@ -2,7 +2,7 @@ resources:
   - mysql.yaml
   - firefly-iii.yaml
   - ingress-firefly-iii-cron.yaml
-  - ffirefly-iii-importer.yaml
+  - firefly-iii-importer.yaml
 secretGenerator:
 - name: firefly-iii-secrets
   literals:
