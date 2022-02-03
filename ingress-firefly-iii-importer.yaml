@@ -4,6 +4,9 @@ metadata:
   annotations:
 #    kubernetes.io/tls-acme: "true"
 #    cert-manager.io/cluster-issuer: letsencrypt-prod
+#    # Use these annotation if you're using nginx ingress
+#    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+#    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
     nginx.org/client-max-body-size: "0"
     nginx.org/proxy-buffer-size: "8k"
   labels:
