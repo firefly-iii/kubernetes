@@ -5,6 +5,7 @@ image:
 
 ingress:
   annotations: {}
+  className: ~
 
 storage:
   class: ~

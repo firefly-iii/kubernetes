@@ -8,10 +8,10 @@ dependencies:
   condition: firefly-db.enabled
   repository: "file://../firefly-db"
 - name: firefly-iii
-  version: 0.0.4
+  version: 0.0.5
   condition: firefly-iii.enabled
   repository: "file://../firefly-iii"
 - name: firefly-csv
-  version: 0.0.4
+  version: 0.0.5
   condition: firefly-csv.enabled
   repository: "file://../firefly-csv"

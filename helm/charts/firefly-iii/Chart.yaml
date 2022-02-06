@@ -1,4 +1,4 @@
 apiVersion: v2
 name: firefly-iii
 description: Installs firefly-iii
-version: 0.0.4
+version: 0.0.5
