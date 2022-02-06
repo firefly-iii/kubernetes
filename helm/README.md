@@ -53,6 +53,28 @@ Each chart has a `Makefile` which is meant to make things easier and provides th
 ## Upgrading
 
 When a release introduces breaking changes, this section outlines the manual actions that need to be taken.
+
+### From 0.0.3 to 0.0.4
+
+The storage class and access modes have been changed to match more setups without the need for configuration. If you want to keep the old settings, set the following values:
+
+```yaml
+firefly-iii:
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+
+firefly-csv:
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+
+firefly-db:
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+```
+
 ### From 0.0.2 to 0.0.3
 
 The `firefly-iii` and `firefly-csv` charts have been updated and now support configuring ingress annotations.

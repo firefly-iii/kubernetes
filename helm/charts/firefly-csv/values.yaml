@@ -7,8 +7,8 @@ ingress:
   annotations: {}
 
 storage:
-  class: nfs-client
-  accessModes: ReadWriteMany
+  class: ~
+  accessModes: ReadWriteOnce
   dataSize: 50Mi
 
 hostName: "csv.monkey.io"

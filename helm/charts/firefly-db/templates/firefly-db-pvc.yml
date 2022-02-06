@@ -9,7 +9,9 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  storageClassName: {{ .Values.storage.class }}
+  {{- with .Values.storage.class }}
+  storageClassName: {{ . }}
+  {{- end }}
   accessModes:
     - {{ .Values.storage.accessModes }}
   resources:

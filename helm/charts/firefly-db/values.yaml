@@ -4,8 +4,8 @@ image:
   pullPolicy: IfNotPresent
 
 storage:
-  class: nfs-client
-  accessModes: ReadWriteMany
+  class: ~
+  accessModes: ReadWriteOnce
   dataSize: 1Gi
 
 configs:
