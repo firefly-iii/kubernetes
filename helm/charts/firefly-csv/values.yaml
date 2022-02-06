@@ -3,6 +3,9 @@ image:
   tag: version-2.6.0
   pullPolicy: IfNotPresent
 
+ingress:
+  annotations: {}
+
 storage:
   class: nfs-client
   accessModes: ReadWriteMany
