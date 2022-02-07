@@ -16,7 +16,7 @@ configs:
   DBPORT: "5432"
   DBNAME: firefly
   DBUSER: firefly
-  TZ: Europe/Berlin
+  TZ: Europe/Amsterdan
   POSTGRES_HOST_AUTH_METHOD: trust
   POSTGRES_USER: firefly
   POSTGRES_PASSWORD: ""

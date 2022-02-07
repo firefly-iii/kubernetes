@@ -1,6 +1,6 @@
 # firefly-csv
 
-This chart installs the CSV importer for firefly
+This chart installs the CSV importer for Firefly III
 
 ## Upgrading
 

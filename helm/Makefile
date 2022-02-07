@@ -37,7 +37,7 @@ upgradeDebug:
 
 .PHONY: teardownDebug
 teardownDebug:
-	@echo "Deleting firefly"
+	@echo "Deleting Firefly III"
 	helm delete firefly-debug --namespace=debug
 	@echo "Done"
 
@@ -59,6 +59,6 @@ upgrade:
 # >>> DELETE PROD <<<
 .PHONY: teardown
 teardown:
-	@echo "Deleting firefly"
+	@echo "Deleting Firefly III"
 	helm delete firefly --namespace=firefly
 	@echo "Done"

@@ -1,6 +1,6 @@
 # firefly-iii
 
-This chart installs Firely III.
+This chart installs Firefly III.
 
 ## Upgrading
 

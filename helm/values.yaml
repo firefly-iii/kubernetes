@@ -51,9 +51,9 @@ firefly-iii:
     DB_PASSWORD: YOURDBPASSWORD
     APP_KEY: SomeRandomStringOf32CharsExactly
     SITE_OWNER: me@example.com
-    DEFAULT_LANGUAGE: "de_DE"
+    DEFAULT_LANGUAGE: "en_US"
     DEFAULT_LOCALE: "equal"
-    TZ: "Europe/Berlin"
+    TZ: "Europe/Amsterdam"
     TRUSTED_PROXIES: "**"
     MAIL_DRIVER: smtp
     MAIL_HOST: ""

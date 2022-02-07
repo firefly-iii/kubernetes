@@ -1,6 +1,6 @@
 # firefly-db
 
-This chart installs a database for firefly
+This chart installs a database for Firefly III
 
 ## Upgrading
 

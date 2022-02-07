@@ -1,4 +1,4 @@
-# Service to expose Firefly-III on an available port in Kubernetes cluster
+# Service to expose Firefly III on an available port in Kubernetes cluster
 # Assigned port can be seen with `kubectl get services firefly-iii`
 
 apiVersion: v1
