@@ -3,12 +3,18 @@ image:
   tag: version-2.6.0
   pullPolicy: IfNotPresent
 
+ingress:
+  annotations: {}
+
 storage:
-  class: nfs-client
-  accessModes: ReadWriteMany
+  class: ~
+  accessModes: ReadWriteOnce
   dataSize: 50Mi
 
 hostName: "csv.monkey.io"
+
+ingress:
+  className: ~
 
 configs:
   FIREFLY_III_CLIENT_ID: ""

@@ -1,4 +1,4 @@
 apiVersion: v2
 name: firefly-csv
 description: Installs firefly's csv importer
-version: 0.0.2
+version: 0.0.5

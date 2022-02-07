@@ -3,9 +3,13 @@ image:
   tag: version-5.5.13
   pullPolicy: IfNotPresent
 
+ingress:
+  annotations: {}
+  className: ~
+
 storage:
-  class: nfs-client
-  accessModes: ReadWriteMany
+  class: ~
+  accessModes: ReadWriteOnce
   dataSize: 1Gi
 
 configs:

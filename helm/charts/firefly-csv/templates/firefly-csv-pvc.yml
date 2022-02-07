@@ -4,7 +4,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
   name: {{ template "firefly-csv.fullname" . }}-pvc
 spec:
-  storageClassName: {{ .Values.storage.class }}
+  {{- with .Values.storage.class }}
+  storageClassName: {{ . }}
+  {{- end }}
   accessModes:
     - {{ .Values.storage.accessModes }}
   resources:

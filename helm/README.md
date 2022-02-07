@@ -5,7 +5,7 @@ Installs firefly-iii in kubernetes.
 Motivated by [Discussion 4778](https://github.com/firefly-iii/firefly-iii/discussions/4778) and [Issue 4266](https://github.com/firefly-iii/firefly-iii/issues/4266).
 
 > WORK IN PROGRESS!
-> At the moment this chart can be seen as a reference. 
+> At the moment this chart can be seen as a reference.
 > Please read the discussion above for detailed information
 
 ## Anatomy
@@ -49,3 +49,49 @@ Each chart has a `Makefile` which is meant to make things easier and provides th
 `make upgrade`: upgrades your production firefly instance by performing `helm upgrade`. For this you need a `my.local.values.yaml`
 
 `make teardown`: deletes your production firefly instance.
+
+## Upgrading
+
+When a release introduces breaking changes, this section outlines the manual actions that need to be taken.
+
+### From 0.0.3 to 0.0.4
+
+The storage class and access modes have been changed to match more setups without the need for configuration. If you want to keep the old settings, set the following values:
+
+```yaml
+firefly-iii:
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+
+firefly-csv:
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+
+firefly-db:
+  storage:
+    class: nfs-client
+    accessModes: ReadWriteMany
+```
+
+### From 0.0.2 to 0.0.3
+
+The `firefly-iii` and `firefly-csv` charts have been updated and now support configuring ingress annotations.
+
+To keep the old annotations, add the following values:
+
+```yaml
+firefly-iii:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+
+firefly-csv:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.org/client-max-body-size: "0"
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+```
