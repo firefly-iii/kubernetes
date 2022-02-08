@@ -1,7 +1,7 @@
 apiVersion: v2
 name: firefly
-description: Installs Firefly III stack (db, app, csv importer)
-version: 0.0.4
+description: Installs Firefly III stack (db, app, importer)
+version: 0.0.5
 dependencies:
 - name: firefly-db
   version: 0.0.3
@@ -11,7 +11,7 @@ dependencies:
   version: 0.0.5
   condition: firefly-iii.enabled
   repository: "file://../firefly-iii"
-- name: firefly-csv
-  version: 0.0.5
-  condition: firefly-csv.enabled
-  repository: "file://../firefly-csv"
+- name: importer
+  version: 1.0.0
+  condition: importer.enabled
+  repository: "file://../importer"

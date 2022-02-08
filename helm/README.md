@@ -5,9 +5,9 @@ Installs Firefly III in kubernetes.
 Motivated by [discussion 4778](https://github.com/firefly-iii/firefly-iii/discussions/4778) and [issue 4266](https://github.com/firefly-iii/firefly-iii/issues/4266).
 
 > WORK IN PROGRESS!
-> 
+>
 > At the moment this chart can be seen as a reference.
-> 
+>
 > Please read the discussion above for detailed information
 
 ## Anatomy
@@ -21,8 +21,8 @@ Backup and restore jobs are invoked by helm hooks. If you delete your Firefly II
 ### firefly-iii
 Installs [Firefly III](https://github.com/firefly-iii/firefly-iii)
 
-### csv-importer
-Installs [CSV importer](https://github.com/firefly-iii/csv-importer)
+### importer
+Installs the [Firefly III data importer](https://github.com/firefly-iii/data-importer).
 
 ## Configuration
 
@@ -33,7 +33,7 @@ Make your own copy and name it `my.local.values.yaml`. This file is contained in
 If you want to test things out, repeat the same procedure creating a `debug.local.values.yaml`.
 
 ## Makefiles
-Each chart has a `Makefile` which is meant to make things easier and provides the following commands:
+The `firefly-iii` and `firefly-db` charts have a `Makefile` which is meant to make things easier and provides the following commands:
 
 `make`: creates the namespaces `debug`, `dryRun` and `firefly` and executes `helm package` to create a .tgz file which the other commands use to install the chart. Make sure that you execute this command after each change of the charts.
 
@@ -54,6 +54,10 @@ Each chart has a `Makefile` which is meant to make things easier and provides th
 ## Upgrading
 
 When a release introduces breaking changes, this section outlines the manual actions that need to be taken.
+
+### From 0.0.4 to 0.0.5
+
+The `firefly-csv` chart has been removed as the CSV importer has been integrated into the importer. Please check out the new [`importer` chart](charts/importer/README.md).
 
 ### From 0.0.3 to 0.0.4
 

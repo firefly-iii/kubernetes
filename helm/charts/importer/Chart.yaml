@@ -1,0 +1,5 @@
+apiVersion: v2
+name: importer
+description: Deploys the importer chart for Firefly III
+type: application
+version: 1.0.0
