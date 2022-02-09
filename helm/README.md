@@ -55,6 +55,10 @@ The `firefly-iii` and `firefly-db` charts have a `Makefile` which is meant to ma
 
 When a release introduces breaking changes, this section outlines the manual actions that need to be taken.
 
+### From 0.0.5 to 0.1.0
+
+The `firefly-iii` chart has been overhauled and contains breaking changes. Please check out [the charts upgrade notes](charts/firefly-iii/README.md#from-004-to-100).
+
 ### From 0.0.4 to 0.0.5
 
 The `firefly-csv` chart has been removed as the CSV importer has been integrated into the importer. Please check out the new [`importer` chart](charts/importer/README.md).

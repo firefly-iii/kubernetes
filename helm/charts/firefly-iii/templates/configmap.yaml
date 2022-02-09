@@ -1,0 +1,12 @@
+{{- if .Values.config.env }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "firefly-iii.fullname" . }}
+  labels:
+    {{- include "firefly-iii.labels" . | nindent 4 }}
+data:
+{{- range $key, $value := .Values.config.env }}
+  {{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- end }}
