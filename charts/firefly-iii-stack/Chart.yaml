@@ -1,7 +1,7 @@
 apiVersion: v2
 name: firefly-iii-stack
 description: Installs Firefly III stack (db, app, importer)
-version: 0.2.0
+version: 0.2.1
 dependencies:
 - name: firefly-db
   version: 0.0.3
@@ -12,6 +12,6 @@ dependencies:
   condition: firefly-iii.enabled
   repository: "file://../firefly-iii"
 - name: importer
-  version: 1.0.0
+  version: 1.0.1
   condition: importer.enabled
   repository: "file://../importer"

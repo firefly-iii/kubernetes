@@ -9,7 +9,7 @@ This chart installs the data importer for Firefly III.
 There are some values that you should check before installing this chart:
 
 * `trustedProxies` (default: `"**"`): The proxies that are trusted by the importer
-* `fireflyiii.url` (default: `"http://firefly-firefly-iii-svc:8080"`): The URL at which Firefly III is available
+* `fireflyiii.url` (default: `"http://firefly-firefly-iii:8080"`): The URL at which Firefly III is available
 
 For authentication, use `fireflyiii.auth.existingSecret` if you have an existing Secret with `data.accessToken` specified.
 When you set `fireflyiii.auth.accessToken`, be aware that this is a secret and should not be commited to a repository.

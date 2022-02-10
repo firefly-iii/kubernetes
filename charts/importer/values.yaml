@@ -4,8 +4,8 @@ replicaCount: 1
 trustedProxies: "**"
 
 fireflyiii:
-  # -- The URL at which Firefly III is available
-  url: "http://firefly-firefly-iii-svc:8080"
+  # -- The URL at which Firefly III is available. If you change this value, click the "Reauthenticate" button on the importer after opening it!
+  url: "http://firefly-firefly-iii:80"
 
   auth:
     # -- If you specify an existingSecret, it has to have the accessToken in a .spec.data.accessToken
