@@ -60,10 +60,12 @@ firefly-csv:
       nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
 ```
 
-## Releasing
+## Development and testing
 
-:information_source: If you're a user of those charts, this section is not relevant for you. It contains information about chart maintenance and release process for maintainers.
+### Dependency chart overrides
 
-Until an automatic release mechanism for this repository is built, you need to run `helm dependency update` and `helm dependency build` in this directory to build the release artifacts needed to install the stack chart.
+Unfortunately, helm does not yet have a neat mechanism to dynamically override chart dependencies for local development/testing.
 
-This will be unnecessary once we move to an automated release process and reference remote, not local chart versions.
+Therefore, you'll need to override the dependencies manually for local testing and development. To do so, you need to update the `Chart.yaml` file.
+
+For every dependency, replace `repository: https://firefly-iii.github.io/kubernetes/` with `repository: file://../${dependency_chart_name}`.

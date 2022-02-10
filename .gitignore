@@ -1,5 +1,2 @@
 # Helm packages
 *.tgz
-
-# But not those, they are currently needed for releases.
-!charts/firefly-iii-stack/charts/*.tgz

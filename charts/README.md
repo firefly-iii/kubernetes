@@ -18,3 +18,7 @@ This chart repository contains four charts:
 Each chart contains a `values.yaml` file that is set up with best practices in mind. If you want to override them, specify your own values file for the helm command.
 
 Note that if you use the firefly-iii-stack chart, you'll have to put the values in the respective key, e.g. `firefly-iii.config` for the `config` values of the [firefly-iii](firefly-iii) chart.
+
+## Development and testing
+
+For the firefly-iii-stack chart, you need to [override the chart dependencies locally](firefly-iii-stack/README.md#dependency-chart-overrides) to develop it on your machine.
