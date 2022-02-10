@@ -64,6 +64,6 @@ firefly-csv:
 
 :information_source: If you're a user of those charts, this section is not relevant for you. It contains information about chart maintenance and release process for maintainers.
 
-Until an automatic release mechanism for this repository is built, you need to run `helm dependency build` in this directory to build the release artifacts needed to install the stack chart.
+Until an automatic release mechanism for this repository is built, you need to run `helm dependency update` and `helm dependency build` in this directory to build the release artifacts needed to install the stack chart.
 
 This will be unnecessary once we move to an automated release process and reference remote, not local chart versions.
