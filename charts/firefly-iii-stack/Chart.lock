@@ -1,0 +1,12 @@
+dependencies:
+- name: firefly-db
+  repository: file://../firefly-db
+  version: 0.0.3
+- name: firefly-iii
+  repository: file://../firefly-iii
+  version: 1.0.0
+- name: importer
+  repository: file://../importer
+  version: 1.0.0
+digest: sha256:68ce31b588b8fe9e9518d74cc2cb27607bb198bd4e233993515ff136528e810f
+generated: "2022-02-10T10:52:23.878218582+01:00"
