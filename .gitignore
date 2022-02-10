@@ -1,8 +1,5 @@
-# helm packages
+# Helm packages
 *.tgz
 
-*.local.values.yml
-*.local.values.yaml
-
-# place where I play with stuff
-tmp/
+# But not those, they are currently needed for releases.
+!charts/firefly-iii-stack/charts/*.tgz
