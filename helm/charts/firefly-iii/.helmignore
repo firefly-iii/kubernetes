@@ -14,12 +14,10 @@
 *.swp
 *.bak
 *.tmp
+*.orig
 *~
 # Various IDEs
 .project
 .idea/
 *.tmproj
-# my 2 cents
-*.tgz
-Makefile
-*.local.yaml
+.vscode/

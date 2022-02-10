@@ -1,0 +1,86 @@
+{{- if .Values.cronjob.enabled }}
+{{- if or (.Values.cronjob.auth.token) (.Values.cronjob.auth.existingSecret) }}
+{{- if .Capabilities.APIVersions.Has "batch/v1" }}
+apiVersion: batch/v1
+{{- else -}}
+apiVersion: batch/v1beta1
+{{- end }}
+kind: CronJob
+metadata:
+  name: {{ include "firefly-iii.fullname" . }}
+  labels:
+    {{- include "firefly-iii.labels" . | nindent 4 }}
+    {{- with .Values.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  annotations:
+    {{- with .Values.cronjob.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  {{- with .Values.cronjob.successfulJobsHistoryLimit }}
+  successfulJobsHistoryLimit: {{ . }}
+  {{- end }}
+  {{- with .Values.cronjob.failedJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ . }}
+  {{- end }}
+  schedule: "{{ .Values.cronjob.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          {{- with .Values.cronjob.podAnnotations }}
+          annotations: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          labels: {{- include "firefly-iii.selectorLabels" . | nindent 12 }}
+        spec:
+          restartPolicy: {{ .Values.cronjob.restartPolicy }}
+          {{- with .Values.cronjob.imagePullSecrets }}
+          imagePullSecrets: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.cronjob.podSecurityContext }}
+          securityContext: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: {{ .Chart.Name }}
+              {{- with .Values.cronjob.securityContext }}
+              securityContext: {{- toYaml . | nindent 16 }}
+              {{- end }}
+              image: "{{ .Values.cronjob.image.repository }}:{{ .Values.cronjob.image.tag }}"
+              imagePullPolicy: {{ .Values.cronjob.image.pullPolicy }}
+              {{- /* Check if both the token and the existingSecret are defined and fail (this would lead to invalid configuration) */ -}}
+              {{- if and (.Values.cronjob.auth.token) (.Values.cronjob.auth.existingSecret) }}
+              {{- fail "You must only define one of .Values.cronjob.auth.token or .Values.cronjob.auth.existingSecret, not both!" }}
+              {{- end }}
+              env:
+                - name: FIREFLY_III_TOKEN
+                {{- if .Values.cronjob.auth.token }}
+                  value: {{ .Values.cronjob.auth.token }}
+                {{- end }}
+                {{- if .Values.cronjob.auth.existingSecret }}
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ .Values.cronjob.auth.existingSecret }}
+                      key: token
+                {{- end }}
+              command:
+                - /usr/bin/curl
+              args:
+                - --silent
+                - --show-error
+                - --fail
+                - "http://{{ include "firefly-iii.fullname" . }}/api/v1/cron/$(FIREFLY_III_TOKEN)"
+              {{- with .Values.cronjob.resources }}
+              resources: {{- toYaml . | nindent 16 }}
+              {{- end }}
+          {{- with .Values.cronjob.nodeSelector }}
+          nodeSelector: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.cronjob.affinity }}
+          affinity: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.cronjob.tolerations }}
+          tolerations: {{- toYaml . | nindent 12 }}
+          {{- end }}
+{{- end }}
+{{- end }}

@@ -25,45 +25,8 @@ firefly-db:
   backupSchedule: "0 3 * * *"
 
 firefly-iii:
-  # if you set this to false it will not be installed
+  # -- Set to false to not deploy Firefly III
   enabled: true
-  image:
-    repository: "fireflyiii/core"
-    tag: version-5.5.13
-    pullPolicy: IfNotPresent
-
-  storage:
-    class: nfs-client
-    accessModes: ReadWriteMany
-    dataSize: 1Gi
-
-  # hostname for ingress
-  hostName: firefly.example.io
-
-  # environment variables
-  # see here: https://github.com/firefly-iii/firefly-iii/blob/main/.env.example
-  configs:
-    DB_CONNECTION: pgsql
-    DB_HOST: firefly-firefly-db
-    DB_PORT: "5432"
-    DB_DATABASE: firefly
-    DB_USERNAME: firefly
-    DB_PASSWORD: YOURDBPASSWORD
-    APP_KEY: SomeRandomStringOf32CharsExactly
-    SITE_OWNER: me@example.com
-    DEFAULT_LANGUAGE: "en_US"
-    DEFAULT_LOCALE: "equal"
-    TZ: "Europe/Amsterdam"
-    TRUSTED_PROXIES: "**"
-    MAIL_DRIVER: smtp
-    MAIL_HOST: ""
-    MAIL_PORT: ""
-    MAIL_FROM: ""
-    MAIL_PASSWORD: ""
-    MAIL_ENCRYPTION: SSL
-    SEND_REGISTRATION_MAIL: "true"
-    SEND_ERROR_MESSAGE: "true"
-    SEND_REPORT_JOURNALS: "true"
 
 importer:
   # -- Set to false to not deploy the importer

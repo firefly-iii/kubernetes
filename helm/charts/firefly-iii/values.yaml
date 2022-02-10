@@ -1,38 +1,137 @@
+replicaCount: 1
+
 image:
   repository: "fireflyiii/core"
-  tag: version-5.5.13
   pullPolicy: IfNotPresent
+  tag: version-5.6.14
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+persistence:
+  # -- If you set this to false, uploaded attachments are not stored persistently and will be lost with every restart of the pod
+  enabled: true
+  class: ""
+  accessModes: ReadWriteOnce
+  storage: 1Gi
+
+# -- Environment variables for Firefly III. See docs at: https://github.com/firefly-iii/firefly-iii/blob/main/.env.example
+config:
+  # -- Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env
+  existingSecret: ""
+
+  # -- Directly defined environment variables. Use this for non-secret configuration values.
+  env:
+    DB_CONNECTION: pgsql
+    DB_PORT: "5432"
+    DB_DATABASE: firefly
+    DB_USERNAME: firefly
+    DEFAULT_LANGUAGE: "en_US"
+    DEFAULT_LOCALE: "equal"
+    TZ: "Europe/Amsterdam"
+    TRUSTED_PROXIES: "**"
+
+# -- A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/).
+cronjob:
+  # -- Set to true to enable the CronJob. Note that you need to specify either cronjob.auth.existingSecret or cronjob.auth.token for it to actually be deployed.
+  enabled: false
+
+  # -- Authorization for the CronJob. See https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/#request-a-page-over-the-web
+  auth:
+    # -- The name of a secret containing a data.token field with the cronjob token
+    existingSecret: ""
+
+    # -- The token in plain text
+    token: ""
+
+  # -- Annotations for the CronJob
+  annotations: {}
+
+  # -- When to run the CronJob. Defaults to 03:00 as this is when Firefly III executes regular tasks.
+  schedule: "0 3 * * *"
+
+  # -- How many pods to keep around for successful jobs
+  successfulJobsHistoryLimit: 3
+
+  # -- How many pods to keep around for failed jobs
+  failedJobsHistoryLimit: 1
+
+  # -- How to treat failed jobs
+  restartPolicy: OnFailure
+
+  image:
+    repository: curlimages/curl
+    pullPolicy: IfNotPresent
+    tag: 7.81.0
+
+  imagePullSecrets: []
+
+  podAnnotations: {}
+
+  securityContext: {}
+
+  podSecurityContext: {}
+
+  resources: {}
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
 
 ingress:
+  enabled: false
+  className: ""
   annotations: {}
-  className: ~
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
-storage:
-  class: ~
-  accessModes: ReadWriteOnce
-  dataSize: 1Gi
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
 
-configs:
-  DB_CONNECTION: ""
-  DB_HOST: ""
-  DB_PORT: ""
-  DB_DATABASE: ""
-  DB_USERNAME: ""
-  DB_PASSWORD: ""
-  APP_KEY: ""
-  SITE_OWNER: ""
-  DEFAULT_LANGUAGE: "en_US"
-  DEFAULT_LOCALE: "equal"
-  TZ: "Europe/Amsterdam"
-  TRUSTED_PROXIES: "**"
-  MAIL_DRIVER: ""
-  MAIL_HOST: ""
-  MAIL_PORT: ""
-  MAIL_FROM: ""
-  MAIL_PASSWORD: ""
-  MAIL_ENCRYPTION: ""
-  SEND_REGISTRATION_MAIL: "false"
-  SEND_ERROR_MESSAGE: "false"
-  SEND_REPORT_JOURNALS: "false"
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
-hostName: firefly.example.io
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
