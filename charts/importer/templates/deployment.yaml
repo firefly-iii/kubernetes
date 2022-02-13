@@ -43,6 +43,10 @@ spec:
                   key: accessToken
             - name: FIREFLY_III_URL
               value: {{ .Values.fireflyiii.url }}
+            {{- if .Values.fireflyiii.vanityUrl }}
+            - name: VANITY_URL
+              value: {{ .Values.fireflyiii.vanityUrl }}
+            {{- end }}
             - name: TRUSTED_PROXIES
               value: {{ .Values.trustedProxies | quote }}
           ports:

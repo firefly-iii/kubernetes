@@ -7,6 +7,6 @@ dependencies:
   version: 1.0.0
 - name: importer
   repository: file://../importer
-  version: 1.0.1
-digest: sha256:9f3e4d4a0074368a806045da018f03e969ffc0e9bf2761e16908df75b8d6272c
-generated: "2022-02-10T13:37:38.397518254+01:00"
+  version: 1.1.0
+digest: sha256:21b110d1c03f73d34f2370323e8a13eaa97907dc64a60e33908f2065c46b5254
+generated: "2022-02-12T23:10:10.505632775+01:00"
