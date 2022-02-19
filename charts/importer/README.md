@@ -1,8 +1,17 @@
 # importer
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Deploys the importer chart for Firefly III
+**Homepage:** <https://www.firefly-iii.org/>
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| morre | firefly-iii@mor.re |  |
+## Source Code
+
+* <https://github.com/firefly-iii/data-importer>
 
 ## Setup
 
