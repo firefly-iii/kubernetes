@@ -1,0 +1,54 @@
+apiVersion: v1
+entries:
+  firefly-db:
+  - apiVersion: v2
+    created: "2022-02-19T14:11:21.222357254Z"
+    description: Installs a postgres db for Firefly III
+    digest: 6426eff3e17d26d3433b3dfdf3394a5d37d43dd4fa6c3b03a0c77359d7220feb
+    name: firefly-db
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-db-0.0.4/firefly-db-0.0.4.tgz
+    version: 0.0.4
+  firefly-iii:
+  - apiVersion: v2
+    created: "2022-02-19T14:11:21.346851815Z"
+    description: Installs Firefly III
+    digest: a1991946f9093e9cf2b993887b2f91e397df40df2b89ab2c6aa45a24ca14330d
+    name: firefly-iii
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-1.0.1/firefly-iii-1.0.1.tgz
+    version: 1.0.1
+  firefly-iii-stack:
+  - apiVersion: v2
+    created: "2022-02-19T14:11:21.466708292Z"
+    dependencies:
+    - condition: firefly-db.enabled
+      name: firefly-db
+      repository: file://../firefly-db
+      version: 0.0.4
+    - condition: firefly-iii.enabled
+      name: firefly-iii
+      repository: file://../firefly-iii
+      version: 1.0.1
+    - condition: importer.enabled
+      name: importer
+      repository: file://../importer
+      version: 1.1.1
+    description: Installs Firefly III stack (db, app, importer)
+    digest: e1e28c8a758d379fc3f9612c4323ea274ce1098e2c9be2e877d728f085032ce0
+    name: firefly-iii-stack
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-stack-0.4.1/firefly-iii-stack-0.4.1.tgz
+    version: 0.4.1
+  importer:
+  - apiVersion: v2
+    created: "2022-02-19T14:11:21.594179036Z"
+    description: Deploys the importer chart for Firefly III
+    digest: 0aaa7dcb88d359cddcb13fec39e1160975c55ba50ff02528e42b05a08a165f7a
+    name: importer
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
+    version: 1.1.1
+generated: "2022-02-19T14:11:21.594187837Z"
