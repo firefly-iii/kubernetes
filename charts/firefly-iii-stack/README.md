@@ -6,6 +6,10 @@ Installs Firefly III in kubernetes, optionally with a database and the importer.
 
 When a release introduces breaking changes, this section outlines the manual actions that need to be taken.
 
+### From 0.4.0 to 0.5.0
+
+No breaking changes in this release, but you can now use the helm repository directly from https://firefly-iii.github.io/kubernetes/.
+
 ### From 0.1.0 to 0.2.0
 
 The **firefely** wrapper chart has been renamed to **firefly-iii-stack**. All charts are now contained directly in the `charts` directory, following best practices for chart repositories.
