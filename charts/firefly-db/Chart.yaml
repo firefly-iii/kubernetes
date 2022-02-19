@@ -1,4 +1,0 @@
-apiVersion: v2
-name: firefly-db
-description: Installs a postgres db for Firefly III
-version: 0.0.3
