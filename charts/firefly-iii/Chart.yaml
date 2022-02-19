@@ -1,5 +1,0 @@
-apiVersion: v2
-name: firefly-iii
-description: Installs Firefly III
-type: application
-version: 1.0.0
