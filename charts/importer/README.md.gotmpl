@@ -1,0 +1,27 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+{{ template "chart.badgesSection" . }}
+
+{{ template "chart.description" . }}
+{{ template "chart.homepageLine" . }}
+{{ template "chart.maintainersSection" . }}
+{{ template "chart.sourcesSection" . }}
+{{ template "chart.requirementsSection" . }}
+
+## Setup
+
+:warning: When enabling the ingress, be aware that the importer does not have any authentication. You are responsible to configure authentication at the ingress level
+
+There are some values that you should check before installing this chart:
+
+* `trustedProxies` (default: `"**"`): The proxies that are trusted by the importer
+* `fireflyiii.url` (default: `"http://firefly-firefly-iii:8080"`): The URL at which Firefly III is available
+
+For authentication, use `fireflyiii.auth.existingSecret` if you have an existing Secret with `data.accessToken` specified.
+When you set `fireflyiii.auth.accessToken`, be aware that this is a secret and should not be commited to a repository.
+
+## Upgrading
+
+When a release introduces breaking changes, this section outlines the manual actions that need to be taken.
+
+{{ template "chart.valuesSection" . }}

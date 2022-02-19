@@ -1,0 +1,25 @@
+name: Helm Docs
+
+on:
+  push:
+   
+jobs:
+  helm-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        # renovate: go-version
+        go-version: 1.17.3
+
+    - name: Install helm-docs
+      run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
+
+    - name: regenerate documentation
+      run: $HOME/go/bin/helm-docs
+
+    - name: Commit updated docs
+      uses: EndBug/add-and-commit@v8
+      with:
+        message: 'docs: regenerate chart README.md'
