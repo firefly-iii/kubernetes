@@ -1,2 +1,6 @@
 # Helm packages
 *.tgz
+
+# Helm chart lock files - those would need manual updates.
+# As we have all charts in the same repository, we can assume trust between them
+Chart.lock
