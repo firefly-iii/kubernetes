@@ -4,6 +4,21 @@
 
 Installs Firefly III in kubernetes.
 
+## Installation
+
+Add the helm repository with
+
+```sh
+helm repo add firefly-iii https://firefly-iii.github.io/kubernetes
+helm repo update
+```
+
+The charts are then usable as e.g. `firefly-iii/firefly-iii-stack`:
+
+```sh
+helm install firefly-iii firefly-iii/firefly-iii-stack
+```
+
 ## Anatomy
 
 This chart repository contains four charts:
