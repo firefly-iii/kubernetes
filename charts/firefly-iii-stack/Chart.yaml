@@ -1,7 +1,8 @@
 apiVersion: v2
 name: firefly-iii-stack
+version: 0.5.1
 description: Installs Firefly III stack (db, app, importer)
-version: 0.5.0
+type: application
 dependencies:
 - name: firefly-db
   version: 0.0.4
@@ -15,3 +16,10 @@ dependencies:
   version: 1.1.1
   condition: importer.enabled
   repository: https://firefly-iii.github.io/kubernetes/
+home: https://github.com/firefly-iii/kubernetes
+sources:
+  - https://github.com/firefly-iii/kubernetes
+maintainers:
+  - name: morre
+    email: firefly-iii@mor.re
+icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png

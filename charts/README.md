@@ -37,3 +37,15 @@ Note that if you use the firefly-iii-stack chart, you'll have to put the values 
 ## Development and testing
 
 For the firefly-iii-stack chart, you need to [override the chart dependencies locally](firefly-iii-stack/README.md#dependency-chart-overrides) to develop it on your machine.
+
+### Versioning
+
+Helm charts use semantic versioning. For the charts in this repository, we only use the `[MAJOR].[MINOR].[PATCH]` syntax without any pre-releases.
+
+Please bump as follows:
+
+* Major version for breaking changes (this includes updates of default values as users may need to manually update their values)
+* Minor version when you add features
+* Patch version for bug fixes and documentation updates
+
+For the automatic releasing and linting to work, do not manually update the `firefly-iii-stack` to use new dependency versions in the same PR as this will fail validation and releasing.
