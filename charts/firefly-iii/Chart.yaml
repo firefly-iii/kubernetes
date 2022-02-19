@@ -1,5 +1,12 @@
 apiVersion: v2
 name: firefly-iii
+version: 1.0.2
 description: Installs Firefly III
 type: application
-version: 1.0.1
+home: https://www.firefly-iii.org/
+sources:
+  - https://github.com/firefly-iii/firefly-iii/
+maintainers:
+  - name: morre
+    email: firefly-iii@mor.re
+icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
