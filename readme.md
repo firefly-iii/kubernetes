@@ -1,7 +1,6 @@
-# Official Firefly III k8n files
+## Firefly III helm registry
 
-[![Packagist](https://img.shields.io/packagist/v/grumpydictator/firefly-iii.svg?style=flat-square)](https://packagist.org/packages/grumpydictator/firefly-iii) 
-[![License](https://img.shields.io/github/license/firefly-iii/firefly-iii.svg?style=flat-square])](https://www.gnu.org/licenses/agpl-3.0.html) 
+[![License](https://img.shields.io/github/license/firefly-iii/firefly-iii.svg?style=flat-square])](https://www.gnu.org/licenses/agpl-3.0.html)
 [![Donate using Patreon](https://img.shields.io/badge/donate-%40JC5-green?logo=patreon&style=flat-square)](https://www.patreon.com/jc5)
 [![Donate using GitHub](https://img.shields.io/badge/donate-GitHub-green?logo=github&style=flat-square)](https://github.com/sponsors/JC5)
 
@@ -20,17 +19,22 @@
   </p>
 <!--- END PROJECT LOGO -->
 
-This repository contains the scripts that can help you deploy Firefly III on Kubernetes. In this repository you'll find:
+This is the official helm registry for [Firefly III](https://github.com/firefly-iii/firefly-iii/). For other deployment methods, check out [firefly-iii/kubernetes](https://github.com/firefly-iii/kubernetes) directly.
 
-* [mysql.yaml](mysql.yaml), to create a MySQL database.
-* [firefly-iii.yaml](firefly-iii.yaml), to run Firefly III.
-* [kustomization.yaml](kustomization.yaml), containing references to both and the necessary secrets.
+You can add it to your local installation with
 
-Here are some links for your reading pleasure.
+```sh
+helm repo add firefly-iii https://firefly-iii.github.io/kubernetes/
+helm repo update
+```
 
-- [Firefly III on GitHub](https://github.com/firefly-iii/firefly-iii)
-- [Documentation](https://docs.firefly-iii.org/installation/k8n)
-- [Extra instructions and information](https://github.com/creylopez/ffiiimacosk8s) for MacOS.
+and then install it with
+
+```sh
+helm install firefly-iii firefly-iii/firefly-iii-stack
+```
+
+For detailed documentation on the charts, check out the [`charts` directory in firefly-iii/kubernetes](https://github.com/firefly-iii/kubernetes/tree/main/charts).
 
 Please open any issues you have [in the main repository](https://github.com/firefly-iii/firefly-iii).
 
@@ -42,7 +46,7 @@ If you need support using Firefly III or the associated tools, come find us!
 - [GitHub Discussions for questions and support](https://github.com/firefly-iii/firefly-iii/discussions/)
 - [Gitter.im for a good chat and a quick answer](https://gitter.im/firefly-iii/firefly-iii)
 - [GitHub Issues for bugs and issues](https://github.com/firefly-iii/firefly-iii/issues)
-- [Follow me around for news and updates on Twitter](https://twitter.com/Firefly_iii)
+- [Follow Firefly III for news and updates on Twitter](https://twitter.com/Firefly_iii)
 
 <!-- END OF HELP TEXT -->
 
