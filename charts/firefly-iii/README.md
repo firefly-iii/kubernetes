@@ -1,6 +1,17 @@
 # firefly-iii
 
-This chart installs Firefly III.
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+
+Installs Firefly III
+**Homepage:** <https://www.firefly-iii.org/>
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| morre | firefly-iii@mor.re |  |
+## Source Code
+
+* <https://github.com/firefly-iii/firefly-iii/>
 
 ## Upgrading
 
@@ -58,3 +69,50 @@ ingress:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
 ```
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| affinity | object | `{}` |  |
+| autoscaling.enabled | bool | `false` |  |
+| autoscaling.maxReplicas | int | `100` |  |
+| autoscaling.minReplicas | int | `1` |  |
+| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| config | object | `{"env":{"DB_CONNECTION":"pgsql","DB_DATABASE":"firefly","DB_PORT":"5432","DB_USERNAME":"firefly","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"},"existingSecret":""}` | Environment variables for Firefly III. See docs at: https://github.com/firefly-iii/firefly-iii/blob/main/.env.example |
+| config.env | object | `{"DB_CONNECTION":"pgsql","DB_DATABASE":"firefly","DB_PORT":"5432","DB_USERNAME":"firefly","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"}` | Directly defined environment variables. Use this for non-secret configuration values. |
+| config.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env |
+| cronjob | object | `{"affinity":{},"annotations":{},"auth":{"existingSecret":"","token":""},"enabled":false,"failedJobsHistoryLimit":1,"image":{"pullPolicy":"IfNotPresent","repository":"curlimages/curl","tag":"7.81.0"},"imagePullSecrets":[],"nodeSelector":{},"podAnnotations":{},"podSecurityContext":{},"resources":{},"restartPolicy":"OnFailure","schedule":"0 3 * * *","securityContext":{},"successfulJobsHistoryLimit":3,"tolerations":[]}` | A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/). |
+| cronjob.annotations | object | `{}` | Annotations for the CronJob |
+| cronjob.auth | object | `{"existingSecret":"","token":""}` | Authorization for the CronJob. See https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/#request-a-page-over-the-web |
+| cronjob.auth.existingSecret | string | `""` | The name of a secret containing a data.token field with the cronjob token |
+| cronjob.auth.token | string | `""` | The token in plain text |
+| cronjob.enabled | bool | `false` | Set to true to enable the CronJob. Note that you need to specify either cronjob.auth.existingSecret or cronjob.auth.token for it to actually be deployed. |
+| cronjob.failedJobsHistoryLimit | int | `1` | How many pods to keep around for failed jobs |
+| cronjob.restartPolicy | string | `"OnFailure"` | How to treat failed jobs |
+| cronjob.schedule | string | `"0 3 * * *"` | When to run the CronJob. Defaults to 03:00 as this is when Firefly III executes regular tasks. |
+| cronjob.successfulJobsHistoryLimit | int | `3` | How many pods to keep around for successful jobs |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"fireflyiii/core"` |  |
+| image.tag | string | `"version-5.6.14"` |  |
+| imagePullSecrets | list | `[]` |  |
+| ingress.annotations | object | `{}` |  |
+| ingress.className | string | `""` |  |
+| ingress.enabled | bool | `false` |  |
+| ingress.hosts[0] | string | `"chart-example.local"` |  |
+| ingress.tls | list | `[]` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| persistence.accessModes | string | `"ReadWriteOnce"` |  |
+| persistence.class | string | `""` |  |
+| persistence.enabled | bool | `true` | If you set this to false, uploaded attachments are not stored persistently and will be lost with every restart of the pod |
+| persistence.storage | string | `"1Gi"` |  |
+| podAnnotations | object | `{}` |  |
+| podSecurityContext | object | `{}` |  |
+| replicaCount | int | `1` |  |
+| resources | object | `{}` |  |
+| securityContext | object | `{}` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
+| tolerations | list | `[]` |  |

@@ -1,6 +1,17 @@
 # firefly-db
 
-This chart installs a database for Firefly III
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+
+Installs a postgres db for Firefly III
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| morre | firefly-iii@mor.re |  |
+## Source Code
+
+* <https://github.com/firefly-iii/kubernetes/tree/main/charts/firefly-db>
 
 ## Upgrading
 
@@ -15,3 +26,26 @@ storage:
   class: nfs-client
   accessModes: ReadWriteMany
 ```
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| backupSchedule | string | `"0 3 * * *"` |  |
+| configs.BACKUP_URL | string | `""` |  |
+| configs.DBHOST | string | `"firefly-firefly-db"` |  |
+| configs.DBNAME | string | `"firefly"` |  |
+| configs.DBPORT | string | `"5432"` |  |
+| configs.DBUSER | string | `"firefly"` |  |
+| configs.PGPASSWORD | string | `""` |  |
+| configs.POSTGRES_HOST_AUTH_METHOD | string | `"trust"` |  |
+| configs.POSTGRES_PASSWORD | string | `""` |  |
+| configs.POSTGRES_USER | string | `"firefly"` |  |
+| configs.RESTORE_URL | string | `""` |  |
+| configs.TZ | string | `"Europe/Amsterdan"` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"postgres"` |  |
+| image.tag | string | `"10-alpine"` |  |
+| storage.accessModes | string | `"ReadWriteOnce"` |  |
+| storage.class | string | `nil` |  |
+| storage.dataSize | string | `"1Gi"` |  |

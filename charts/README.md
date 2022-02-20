@@ -38,6 +38,10 @@ Note that if you use the firefly-iii-stack chart, you'll have to put the values 
 
 For the firefly-iii-stack chart, you need to [override the chart dependencies locally](firefly-iii-stack/README.md#dependency-chart-overrides) to develop it on your machine.
 
+Please document values with `# -- <Documentation here>` comments so that helm-docs can automatically pick them up for the README.
+
+When introducing breaking changes, please document them in the `README.md.gotmpl` file of the respective chart.
+
 ### Versioning
 
 Helm charts use semantic versioning. For the charts in this repository, we only use the `[MAJOR].[MINOR].[PATCH]` syntax without any pre-releases.

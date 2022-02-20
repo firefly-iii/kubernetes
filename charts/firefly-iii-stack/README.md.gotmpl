@@ -1,24 +1,12 @@
-# firefly-iii-stack
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+{{ template "chart.badgesSection" . }}
 
-![Version: 0.5.2](https://img.shields.io/badge/Version-0.5.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
-
-Installs Firefly III stack (db, app, importer)
-**Homepage:** <https://github.com/firefly-iii/kubernetes>
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| morre | firefly-iii@mor.re |  |
-## Source Code
-
-* <https://github.com/firefly-iii/kubernetes>
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://firefly-iii.github.io/kubernetes/ | firefly-db | 0.0.4 |
-| https://firefly-iii.github.io/kubernetes/ | firefly-iii | 1.0.1 |
-| https://firefly-iii.github.io/kubernetes/ | importer | 1.1.1 |
+{{ template "chart.description" . }}
+{{ template "chart.homepageLine" . }}
+{{ template "chart.maintainersSection" . }}
+{{ template "chart.sourcesSection" . }}
+{{ template "chart.requirementsSection" . }}
 
 ## Upgrading
 
@@ -92,25 +80,4 @@ Therefore, you'll need to override the dependencies manually for local testing a
 
 For every dependency, replace `repository: https://firefly-iii.github.io/kubernetes/` with `repository: file://../${dependency_chart_name}`.
 
-## Values
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| firefly-db.backupSchedule | string | `"0 3 * * *"` |  |
-| firefly-db.configs.BACKUP_URL | string | `""` |  |
-| firefly-db.configs.DBHOST | string | `"firefly-firefly-db"` |  |
-| firefly-db.configs.DBNAME | string | `"firefly"` |  |
-| firefly-db.configs.DBPORT | string | `"5432"` |  |
-| firefly-db.configs.DBUSER | string | `"firefly"` |  |
-| firefly-db.configs.PGPASSWORD | string | `"YOURDBPASSWORD"` |  |
-| firefly-db.configs.RESTORE_URL | string | `""` |  |
-| firefly-db.configs.TZ | string | `"Europe/Berlin"` |  |
-| firefly-db.enabled | bool | `true` |  |
-| firefly-db.image.pullPolicy | string | `"IfNotPresent"` |  |
-| firefly-db.image.repository | string | `"postgres"` |  |
-| firefly-db.image.tag | string | `"10-alpine"` |  |
-| firefly-db.storage.accessModes | string | `"ReadWriteMany"` |  |
-| firefly-db.storage.class | string | `"nfs-client"` |  |
-| firefly-db.storage.dataSize | string | `"1Gi"` |  |
-| firefly-iii.enabled | bool | `true` | Set to false to not deploy Firefly III |
-| importer.enabled | bool | `true` | Set to false to not deploy the importer |
+{{ template "chart.valuesSection" . }}
