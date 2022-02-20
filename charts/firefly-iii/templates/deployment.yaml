@@ -72,7 +72,7 @@ spec:
       volumes:
         - name: upload
           persistentVolumeClaim:
-            claimName: {{ default (template "firefly-iii.fullname" .)  .Values.persistence.existingClaim }}
+            claimName: {{ default (include "firefly-iii.fullname" .)  .Values.persistence.existingClaim }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
