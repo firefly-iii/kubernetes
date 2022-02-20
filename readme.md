@@ -1,7 +1,7 @@
-# Official Firefly III k8n files
+# Firefly III Kubernetes resources
 
-[![Packagist](https://img.shields.io/packagist/v/grumpydictator/firefly-iii.svg?style=flat-square)](https://packagist.org/packages/grumpydictator/firefly-iii) 
-[![License](https://img.shields.io/github/license/firefly-iii/firefly-iii.svg?style=flat-square])](https://www.gnu.org/licenses/agpl-3.0.html) 
+[![Packagist](https://img.shields.io/packagist/v/grumpydictator/firefly-iii.svg?style=flat-square)](https://packagist.org/packages/grumpydictator/firefly-iii)
+[![License](https://img.shields.io/github/license/firefly-iii/firefly-iii.svg?style=flat-square])](https://www.gnu.org/licenses/agpl-3.0.html)
 [![Donate using Patreon](https://img.shields.io/badge/donate-%40JC5-green?logo=patreon&style=flat-square)](https://www.patreon.com/jc5)
 [![Donate using GitHub](https://img.shields.io/badge/donate-GitHub-green?logo=github&style=flat-square)](https://github.com/sponsors/JC5)
 
@@ -20,11 +20,21 @@
   </p>
 <!--- END PROJECT LOGO -->
 
-This repository contains the scripts that can help you deploy Firefly III on Kubernetes. In this repository you'll find:
+This repository contains the Kubernetes resources needed to deploy Firefly III, a database and tooling for Firefly III.
 
-* [mysql.yaml](mysql.yaml), to create a MySQL database.
-* [firefly-iii.yaml](firefly-iii.yaml), to run Firefly III.
-* [kustomization.yaml](kustomization.yaml), containing references to both and the necessary secrets.
+## Deployment
+
+### Plain yaml files or kustomize
+
+* [mysql.yaml](kustomize/mysql.yaml), to create a MySQL database.
+* [firefly-iii.yaml](kustomize/firefly-iii.yaml), to run Firefly III.
+* [kustomization.yaml](kustomize/kustomization.yaml), containing references to both and the necessary secrets.
+
+### helm
+
+Check out the helm charts in [`charts`](charts/README.md). A chart repository is available at `https://firefly-iii.github.io/kubernetes/`.
+
+## References
 
 Here are some links for your reading pleasure.
 
