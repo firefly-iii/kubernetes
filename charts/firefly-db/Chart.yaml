@@ -6,5 +6,5 @@ type: application
 sources:
   - https://github.com/firefly-iii/kubernetes/tree/main/charts/firefly-db
 maintainers:
-  - name: morre
+  - name: morremeyer
     email: firefly-iii@mor.re

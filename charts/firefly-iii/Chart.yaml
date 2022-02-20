@@ -7,6 +7,6 @@ home: https://www.firefly-iii.org/
 sources:
   - https://github.com/firefly-iii/firefly-iii/
 maintainers:
-  - name: morre
+  - name: morremeyer
     email: firefly-iii@mor.re
 icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
