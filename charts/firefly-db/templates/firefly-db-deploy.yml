@@ -39,4 +39,4 @@ spec:
       volumes:
         - name: db-storage
           persistentVolumeClaim:
-            claimName: {{ template "firefly-db.fullname" . }}-storage-claim
+            claimName: {{ default (printf "%s-%s" (template "firefly-db.fullname" .) "storage-claim") .Values.storage.existingClaim }}

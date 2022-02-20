@@ -7,6 +7,8 @@ storage:
   class: ~
   accessModes: ReadWriteOnce
   dataSize: 1Gi
+  # -- Use an existing PersistentVolumeClaim, overrides values above
+  existingClaim: ""
 
 configs:
   RESTORE_URL: ""
