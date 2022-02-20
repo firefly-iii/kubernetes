@@ -8,7 +8,7 @@ Installs Firefly III stack (db, app, importer)
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| morre | firefly-iii@mor.re |  |
+| morremeyer | firefly-iii@mor.re |  |
 ## Source Code
 
 * <https://github.com/firefly-iii/kubernetes>
