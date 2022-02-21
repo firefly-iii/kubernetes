@@ -1,6 +1,6 @@
 # firefly-db
 
-![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs a postgres db for Firefly III
 
@@ -43,9 +43,11 @@ storage:
 | configs.POSTGRES_USER | string | `"firefly"` |  |
 | configs.RESTORE_URL | string | `""` |  |
 | configs.TZ | string | `"Europe/Amsterdan"` |  |
+| configs.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in configs |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"postgres"` |  |
 | image.tag | string | `"10-alpine"` |  |
 | storage.accessModes | string | `"ReadWriteOnce"` |  |
 | storage.class | string | `nil` |  |
 | storage.dataSize | string | `"1Gi"` |  |
+| storage.existingClaim | string | `""` | Use an existing PersistentVolumeClaim, overrides values above |

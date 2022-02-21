@@ -1,8 +1,9 @@
+{{- if eq .Values.storage.existingClaim "" }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: {{ .Release.Namespace }}
-  name: {{ template "firefly-db.fullname" . }}-storage-claim
+  name: {{ printf "%s-%s" (include "firefly-db.fullname" .) "storage-claim" }}
   labels:
     app: {{ template "firefly-db.name" . }}
     chart: {{ template "firefly-db.chart" . }}
@@ -17,3 +18,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.dataSize }}
+{{- end }}

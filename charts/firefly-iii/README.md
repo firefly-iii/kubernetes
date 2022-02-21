@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -107,6 +107,7 @@ ingress:
 | persistence.accessModes | string | `"ReadWriteOnce"` |  |
 | persistence.class | string | `""` |  |
 | persistence.enabled | bool | `true` | If you set this to false, uploaded attachments are not stored persistently and will be lost with every restart of the pod |
+| persistence.existingClaim | string | `""` | If you want to use an existing claim, set it here |
 | persistence.storage | string | `"1Gi"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
