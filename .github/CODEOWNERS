@@ -2,4 +2,4 @@
 * @JC5
 
 # morremeyer is maintainer for the helm charts
-charts/ @morremeyer
+/charts/** @morremeyer
