@@ -8,7 +8,7 @@ Deploys the importer chart for Firefly III
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| morremeyer | firefly-iii@mor.re |  |
+| morremeyer | <firefly-iii@mor.re> |  |
 ## Source Code
 
 * <https://github.com/firefly-iii/data-importer>

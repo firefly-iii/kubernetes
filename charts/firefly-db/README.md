@@ -8,7 +8,7 @@ Installs a postgres db for Firefly III
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| morremeyer | firefly-iii@mor.re |  |
+| morremeyer | <firefly-iii@mor.re> |  |
 ## Source Code
 
 * <https://github.com/firefly-iii/kubernetes/tree/main/charts/firefly-db>
