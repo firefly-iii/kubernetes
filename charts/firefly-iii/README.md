@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -12,6 +12,18 @@ Installs Firefly III
 ## Source Code
 
 * <https://github.com/firefly-iii/firefly-iii/>
+
+## Setting environment variables from additional ConfigMaps and Secrets
+
+This enables a simplified syntax to set envirnoment variables from a ConfigMap or Secret:
+
+```yaml
+envValueFrom:
+  USER:
+    secretKeyRef:
+      name: secret-name
+      key: user
+```
 
 ## Upgrading
 
@@ -79,8 +91,9 @@ ingress:
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| config | object | `{"env":{"DB_CONNECTION":"pgsql","DB_DATABASE":"firefly","DB_PORT":"5432","DB_USERNAME":"firefly","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"},"existingSecret":""}` | Environment variables for Firefly III. See docs at: https://github.com/firefly-iii/firefly-iii/blob/main/.env.example |
+| config | object | `{"env":{"DB_CONNECTION":"pgsql","DB_DATABASE":"firefly","DB_PORT":"5432","DB_USERNAME":"firefly","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"},"envValueFrom":{},"existingSecret":""}` | Environment variables for Firefly III. See docs at: https://github.com/firefly-iii/firefly-iii/blob/main/.env.example |
 | config.env | object | `{"DB_CONNECTION":"pgsql","DB_DATABASE":"firefly","DB_PORT":"5432","DB_USERNAME":"firefly","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"}` | Directly defined environment variables. Use this for non-secret configuration values. |
+| config.envValueFrom | object | `{}` | Set environment variables from configMaps or Secrets |
 | config.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env |
 | cronjob | object | `{"affinity":{},"annotations":{},"auth":{"existingSecret":"","token":""},"enabled":false,"failedJobsHistoryLimit":1,"image":{"pullPolicy":"IfNotPresent","repository":"curlimages/curl","tag":"7.81.0"},"imagePullSecrets":[],"nodeSelector":{},"podAnnotations":{},"podSecurityContext":{},"resources":{},"restartPolicy":"OnFailure","schedule":"0 3 * * *","securityContext":{},"successfulJobsHistoryLimit":3,"tolerations":[]}` | A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/). |
 | cronjob.annotations | object | `{}` | Annotations for the CronJob |
