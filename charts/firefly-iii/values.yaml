@@ -23,6 +23,9 @@ config:
   # -- Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env
   existingSecret: ""
 
+  # -- Set environment variables from configMaps or Secrets
+  envValueFrom: {}
+
   # -- Directly defined environment variables. Use this for non-secret configuration values.
   env:
     DB_CONNECTION: pgsql

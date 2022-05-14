@@ -36,6 +36,13 @@ spec:
         {{- end }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- if or .Values.config.envValueFrom }}
+        env:
+        {{- range $key, $value := .Values.config.envValueFrom }}
+          - name: {{ $key }}
+            valueFrom: {{- $value | toYaml | nindent 16 }}
+        {{- end }}
+        {{- end }}
         {{- if or (.Values.config.env) (.Values.config.existingSecret) }}
         envFrom:
           {{- if .Values.config.env }}
