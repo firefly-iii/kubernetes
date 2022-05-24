@@ -34,7 +34,7 @@ A cronjob has been added to support [Firefly III features that need it](https://
 
 The PVC has been renamed. You therefore need to manually back up and restore the upload data or retain and reclaim the PV with the new PVC. As this is highly dependant on your Kubernetes distribution and provider, instructions for the latter can't be generalized.
 
-To backup and restore your files easily, use `kubectl cp $FIREFLY_POD_NAME:/var/www/html/firefly-iii/storage/upload $LOCAL_BACKUP_DIR`, apply the changes and then reverse the process by running `kubectl cp "${LOCAL_BACKUP_DIR}/*" $FIREFLY_POD_NAME:/var/www/html/firefly-iii/storage/upload/`.
+To backup and restore your files easily, use `kubectl cp $FIREFLY_POD_NAME:/var/www/html/storage/upload $LOCAL_BACKUP_DIR`, apply the changes and then reverse the process by running `kubectl cp "${LOCAL_BACKUP_DIR}/*" $FIREFLY_POD_NAME:/var/www/html/storage/upload/`.
 
 #### values.yaml
 
