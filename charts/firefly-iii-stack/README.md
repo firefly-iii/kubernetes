@@ -1,6 +1,6 @@
 # firefly-iii-stack
 
-![Version: 0.5.2](https://img.shields.io/badge/Version-0.5.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs Firefly III stack (db, app, importer)
 **Homepage:** <https://github.com/firefly-iii/kubernetes>
@@ -16,9 +16,9 @@ Installs Firefly III stack (db, app, importer)
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://firefly-iii.github.io/kubernetes/ | firefly-db | 0.0.4 |
-| https://firefly-iii.github.io/kubernetes/ | firefly-iii | 1.0.1 |
-| https://firefly-iii.github.io/kubernetes/ | importer | 1.1.1 |
+| https://firefly-iii.github.io/kubernetes/ | firefly-db | 0.1.0 |
+| https://firefly-iii.github.io/kubernetes/ | firefly-iii | 1.3.2 |
+| https://firefly-iii.github.io/kubernetes/ | importer | 1.1.3 |
 
 ## Upgrading
 
