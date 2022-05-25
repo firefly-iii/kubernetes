@@ -57,7 +57,7 @@ spec:
         {{- if .Values.persistence.enabled }}
         volumeMounts:
           - name: upload
-            mountPath: "/var/www/html/firefly-iii/storage/upload"
+            mountPath: "/var/www/html/storage/upload"
         {{- end }}
         ports:
           - name: http
