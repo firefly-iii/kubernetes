@@ -49,6 +49,23 @@ spec:
             {{- end }}
             - name: TRUSTED_PROXIES
               value: {{ .Values.trustedProxies | quote }}
+          {{- if or .Values.config.envValueFrom }}
+          {{- range $key, $value := .Values.config.envValueFrom }}
+            - name: {{ $key }}
+              valueFrom: {{- $value | toYaml | nindent 16 }}
+          {{- end }}
+          {{- end }}
+          {{- if or (.Values.config.env) (.Values.config.existingSecret) }}
+          envFrom:
+            {{- if .Values.config.env }}
+            - configMapRef:
+                name: {{ template "importer.fullname" . }}
+            {{- end }}
+            {{- if .Values.config.existingSecret }}
+            - secretRef:
+                name: {{ .Values.config.existingSecret }}
+            {{- end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 8080
