@@ -1,6 +1,6 @@
 # importer
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Deploys the importer chart for Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -34,6 +34,10 @@ When a release introduces breaking changes, this section outlines the manual act
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| config | object | `{"env":{"IGNORE_DUPLICATE_ERRORS":"false","TZ":"Europe/Amsterdam"},"envValueFrom":{},"existingSecret":""}` | Environment variables for the importer. See docs at: https://github.com/firefly-iii/data-importer/blob/main/.env.example |
+| config.env | object | `{"IGNORE_DUPLICATE_ERRORS":"false","TZ":"Europe/Amsterdam"}` | Directly defined environment variables. Use this for non-secret configuration values. |
+| config.envValueFrom | object | `{}` | Set environment variables from configMaps or Secrets |
+| config.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env |
 | fireflyiii.auth.accessToken | string | `""` | The access token in plain text |
 | fireflyiii.auth.existingSecret | string | `""` | If you specify an existingSecret, it has to have the accessToken in a .spec.data.accessToken |
 | fireflyiii.url | string | `"http://firefly-firefly-iii:80"` | The URL at which Firefly III is available. If you change this value, click the "Reauthenticate" button on the importer after opening it! |
