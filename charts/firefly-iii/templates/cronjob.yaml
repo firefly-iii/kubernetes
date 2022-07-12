@@ -61,7 +61,7 @@ spec:
                   valueFrom:
                     secretKeyRef:
                       name: {{ .Values.cronjob.auth.existingSecret }}
-                      key: token
+                      key: {{ .Values.cronjob.auth.secretKey }}
                 {{- end }}
               command:
                 - /usr/bin/curl

@@ -47,6 +47,9 @@ cronjob:
     # -- The name of a secret containing a data.token field with the cronjob token
     existingSecret: ""
 
+    # -- The name of the key in the existing secret to get the cronjob token from
+    secretKey: "token"
+
     # -- The token in plain text
     token: ""
 
