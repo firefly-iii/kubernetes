@@ -30,6 +30,19 @@ config:
     IGNORE_DUPLICATE_ERRORS: "false"
     TZ: "Europe/Amsterdam"
 
+  # -- A list of files with a mountPath, a file name and the file's content. Files are stored as a secret.
+  files:
+    - mountPath: /var/www/html/storage/configurations
+      name: test.txt
+      content: |
+        This is a test file with some content
+
+# -- Configure additional mounts for the pod. Value is a list of VolumeMount specs, see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#volumemount-v1-core
+additionalVolumeMounts: []
+
+# -- Configure additional volumes for the Pod. Value is a list of Volume specs, see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#volume-v1-core
+additionalVolumes: []
+
 image:
   repository: fireflyiii/data-importer
   pullPolicy: IfNotPresent
