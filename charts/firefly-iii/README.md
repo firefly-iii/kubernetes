@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.3.2](https://img.shields.io/badge/Version-1.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.3.3](https://img.shields.io/badge/Version-1.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -95,10 +95,11 @@ ingress:
 | config.env | object | `{"DB_CONNECTION":"pgsql","DB_DATABASE":"firefly","DB_PORT":"5432","DB_USERNAME":"firefly","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"}` | Directly defined environment variables. Use this for non-secret configuration values. |
 | config.envValueFrom | object | `{}` | Set environment variables from configMaps or Secrets |
 | config.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env |
-| cronjob | object | `{"affinity":{},"annotations":{},"auth":{"existingSecret":"","token":""},"enabled":false,"failedJobsHistoryLimit":1,"image":{"pullPolicy":"IfNotPresent","repository":"curlimages/curl","tag":"7.81.0"},"imagePullSecrets":[],"nodeSelector":{},"podAnnotations":{},"podSecurityContext":{},"resources":{},"restartPolicy":"OnFailure","schedule":"0 3 * * *","securityContext":{},"successfulJobsHistoryLimit":3,"tolerations":[]}` | A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/). |
+| cronjob | object | `{"affinity":{},"annotations":{},"auth":{"existingSecret":"","secretKey":"token","token":""},"enabled":false,"failedJobsHistoryLimit":1,"image":{"pullPolicy":"IfNotPresent","repository":"curlimages/curl","tag":"7.81.0"},"imagePullSecrets":[],"nodeSelector":{},"podAnnotations":{},"podSecurityContext":{},"resources":{},"restartPolicy":"OnFailure","schedule":"0 3 * * *","securityContext":{},"successfulJobsHistoryLimit":3,"tolerations":[]}` | A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/). |
 | cronjob.annotations | object | `{}` | Annotations for the CronJob |
-| cronjob.auth | object | `{"existingSecret":"","token":""}` | Authorization for the CronJob. See https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/#request-a-page-over-the-web |
+| cronjob.auth | object | `{"existingSecret":"","secretKey":"token","token":""}` | Authorization for the CronJob. See https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/#request-a-page-over-the-web |
 | cronjob.auth.existingSecret | string | `""` | The name of a secret containing a data.token field with the cronjob token |
+| cronjob.auth.secretKey | string | `"token"` | The name of the key in the existing secret to get the cronjob token from |
 | cronjob.auth.token | string | `""` | The token in plain text |
 | cronjob.enabled | bool | `false` | Set to true to enable the CronJob. Note that you need to specify either cronjob.auth.existingSecret or cronjob.auth.token for it to actually be deployed. |
 | cronjob.failedJobsHistoryLimit | int | `1` | How many pods to keep around for failed jobs |
@@ -118,10 +119,10 @@ ingress:
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | persistence.accessModes | string | `"ReadWriteOnce"` |  |
-| persistence.class | string | `""` |  |
 | persistence.enabled | bool | `true` | If you set this to false, uploaded attachments are not stored persistently and will be lost with every restart of the pod |
 | persistence.existingClaim | string | `""` | If you want to use an existing claim, set it here |
 | persistence.storage | string | `"1Gi"` |  |
+| persistence.storageClassName | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
