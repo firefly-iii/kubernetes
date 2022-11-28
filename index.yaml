@@ -207,6 +207,35 @@ entries:
     version: 1.0.1
   firefly-iii-stack:
   - apiVersion: v2
+    created: "2022-11-28T10:45:21.084695363Z"
+    dependencies:
+    - condition: firefly-db.enabled
+      name: firefly-db
+      repository: https://firefly-iii.github.io/kubernetes/
+      version: 0.1.0
+    - condition: firefly-iii.enabled
+      name: firefly-iii
+      repository: https://firefly-iii.github.io/kubernetes/
+      version: 1.3.3
+    - condition: importer.enabled
+      name: importer
+      repository: https://firefly-iii.github.io/kubernetes/
+      version: 1.3.1
+    description: Installs Firefly III stack (db, app, importer)
+    digest: b98f7dc4bf73dcb6f131ff6e7baa4e0447d4d4dd5893be2ec45cf6bab6a6daa7
+    home: https://github.com/firefly-iii/kubernetes
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-iii-stack
+    sources:
+    - https://github.com/firefly-iii/kubernetes
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-stack-0.7.1/firefly-iii-stack-0.7.1.tgz
+    version: 0.7.1
+  - apiVersion: v2
     created: "2022-07-30T15:30:37.836577236Z"
     dependencies:
     - condition: firefly-db.enabled
@@ -483,4 +512,4 @@ entries:
     urls:
     - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
     version: 1.1.1
-generated: "2022-11-28T09:46:29.11935254Z"
+generated: "2022-11-28T10:45:21.234953574Z"
