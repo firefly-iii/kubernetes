@@ -71,11 +71,7 @@ spec:
           {{- with .Values.additionalVolumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.additionalVolumeMounts }}
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
           {{- if .Values.config.files }}
-          volumeMounts:
             {{- range .Values.config.files }}
             - name: files
               mountPath: {{ .mountPath }}/{{ .name }}
