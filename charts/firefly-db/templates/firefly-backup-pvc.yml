@@ -1,0 +1,21 @@
+{{- if and (eq .Values.backup.destination "pvc") (eq .Values.backup.pvc.existingClaim "") }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ printf "%s-%s" (include "firefly-db.fullname" .) "backup-storage-claim" }}
+  labels:
+    app: {{ template "firefly-db.name" . }}
+    chart: {{ template "firefly-db.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  {{- with .Values.backup.pvc.class }}
+  storageClassName: {{ . }}
+  {{- end }}
+  accessModes:
+    - {{ .Values.backup.pvc.accessModes }}
+  resources:
+    requests:
+      storage: {{ .Values.backup.pvc.dataSize }}
+{{- end }}
