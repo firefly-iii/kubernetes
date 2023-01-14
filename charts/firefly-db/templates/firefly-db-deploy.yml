@@ -39,7 +39,7 @@ spec:
             cpu: "500m"
         volumeMounts:
           - name: db-storage
-            mountPath: /var/lib/postgresql
+            mountPath: /var/lib/postgresql/data
             subPath: data
       volumes:
         - name: db-storage

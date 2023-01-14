@@ -32,10 +32,23 @@ spec:
           apk update
           apk add curl
           apk add postgresql
+          {{- if eq .Values.backup.destination "http" }}
           echo "Downloading latest backup"
-          curl $RESTORE_URL --output $DBNAME.sql
+          curl $RESTORE_URL --output /var/lib/backup/${DBNAME}.sql
+          {{- end }}
           echo "Performing restore of db"
           ls -la
-          psql -h $DBHOST -p $DBPORT -U $DBUSER < $DBNAME.sql
+          psql -h $DBHOST -p $DBPORT -U $DBUSER < /var/lib/backup/${DBNAME}.sql
           echo "done"
+        volumeMounts:
+          - name: backup-storage
+            mountPath: /var/lib/backup
       restartPolicy: Never
+      volumes:
+        - name: backup-storage
+          {{- if eq .Values.backup.destination "pvc" }}
+          persistentVolumeClaim:
+            claimName: {{ default (printf "%s-%s" (include "firefly-db.fullname" .) "backup-storage-claim") .Values.backup.pvc.existingClaim }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
