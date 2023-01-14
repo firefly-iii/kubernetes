@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   firefly-db:
   - apiVersion: v2
+    created: "2023-01-14T15:53:53.035837256Z"
+    description: Installs a postgres db for Firefly III
+    digest: 42bd98b8d8d3106c08ff17e5db4970cff608dabf4ca92f1c87809ee127fe9dc0
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-db
+    sources:
+    - https://github.com/firefly-iii/kubernetes/tree/main/charts/firefly-db
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-db-0.2.1/firefly-db-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     created: "2022-02-21T05:10:10.415821544Z"
     description: Installs a postgres db for Firefly III
     digest: e0269c4002fe448fe73c94d0662f632d35f340e7181e39477f13bdc0912b9ab3
@@ -512,4 +526,4 @@ entries:
     urls:
     - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
     version: 1.1.1
-generated: "2022-11-28T10:45:21.234953574Z"
+generated: "2023-01-14T15:53:53.213038875Z"
