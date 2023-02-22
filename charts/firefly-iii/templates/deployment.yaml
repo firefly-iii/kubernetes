@@ -52,6 +52,9 @@ spec:
           {{- if .Values.config.existingSecret }}
           - secretRef:
               name: {{ .Values.config.existingSecret }}
+          {{- else if .Values.secrets.env }}
+          - secretRef:
+              name: {{ template  "firefly-iii.fullname" . }}
           {{- end }}
         {{- end }}
         {{- if .Values.persistence.enabled }}
