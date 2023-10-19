@@ -132,3 +132,5 @@ ingress:
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
+| extraVolumeMounts | list | `[]` |  |
