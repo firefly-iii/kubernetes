@@ -106,6 +106,8 @@ ingress:
 | cronjob.restartPolicy | string | `"OnFailure"` | How to treat failed jobs |
 | cronjob.schedule | string | `"0 3 * * *"` | When to run the CronJob. Defaults to 03:00 as this is when Firefly III executes regular tasks. |
 | cronjob.successfulJobsHistoryLimit | int | `3` | How many pods to keep around for successful jobs |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"fireflyiii/core"` |  |
@@ -132,5 +134,3 @@ ingress:
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
-| extraVolumes | list | `[]` |  |
-| extraVolumeMounts | list | `[]` |  |
