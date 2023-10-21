@@ -149,3 +149,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Here, you can specify custom volumes to use.
+extraVolumes: []
+  # - name: db-tls-firefly
+  #   secret:
+  #     secretName: db-tls-firefly
+  #     defaultMode: 0440
+
+# And here, your custom volume mounts.
+extraVolumeMounts: []
+  # - name: db-tls-firefly
+  #   mountPath: /db-cert
+  #   readOnly: true
