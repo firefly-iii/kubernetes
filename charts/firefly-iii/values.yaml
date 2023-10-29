@@ -162,3 +162,27 @@ extraVolumeMounts: []
   # - name: db-tls-firefly
   #   mountPath: /db-cert
   #   readOnly: true
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  failureThreshold: 3
+
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  failureThreshold: 30
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  failureThreshold: 3

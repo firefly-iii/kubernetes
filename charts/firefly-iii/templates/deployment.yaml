@@ -71,21 +71,33 @@ spec:
           - name: http
             containerPort: 8080
             protocol: TCP
+        {{- if .Values.livenessProbe.enabled }}
         livenessProbe:
+          {{- with .Values.livenessProbe }}
+            {{- omit . "enabled" | toYaml | nindent 10 }}
+          {{- end }}
           httpGet:
             path: /health
             port: http
+        {{- end }}
+        {{- if .Values.readinessProbe.enabled }}
         readinessProbe:
+          {{- with .Values.readinessProbe }}
+            {{- omit . "enabled" | toYaml | nindent 10 }}
+          {{- end }}
           httpGet:
             path: /health
             port: http
+        {{- end }}
+        {{- if .Values.startupProbe.enabled }}
         startupProbe:
+          {{- with .Values.startupProbe }}
+            {{- omit . "enabled" | toYaml | nindent 10 }}
+          {{- end }}
           httpGet:
             path: /health
             port: http
-          # Give the app 30 x 10 = 300s to startup
-          failureThreshold: 30
-          periodSeconds: 10
+        {{- end }}
         {{- with .Values.resources }}
         resources:
           {{- toYaml . | nindent 12 }}
