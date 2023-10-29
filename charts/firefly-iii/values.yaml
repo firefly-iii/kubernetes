@@ -29,7 +29,7 @@ config:
   # -- Directly defined environment variables. Use this for non-secret configuration values.
   env:
     DB_CONNECTION: pgsql
-  #  DB_HOST: #If using external database host
+  #  DB_HOST:
     DB_PORT: "5432"
     DB_DATABASE: firefly
     DB_USERNAME: firefly
@@ -43,8 +43,8 @@ secrets:
   env:
     APP_PASSWORD: "CHANGE_ENCRYPT_ME"
     DB_PASSWORD: "CHANGE_ENCRYPT_ME"
-    APP_KEY: "INSERT_SECURE_STRING_HERE" # APP_KEY is required by Laravel but not will not be properly configured during Helm installation process
-
+    APP_KEY: "INSERT_SECURE_STRING_HERE"
+    
 # -- A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/).
 cronjob:
   # -- Set to true to enable the CronJob. Note that you need to specify either cronjob.auth.existingSecret or cronjob.auth.token for it to actually be deployed.
