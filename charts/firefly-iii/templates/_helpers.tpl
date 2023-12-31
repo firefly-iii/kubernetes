@@ -60,3 +60,11 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{/*
+Create the APP_KEY used for encryption, should be random 32 characters
+*/}}
+{{- define "firefly-iii.app-key" -}}
+{{- randAlphaNum 32 | nospace -}}
+{{- end }}
