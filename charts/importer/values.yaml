@@ -73,6 +73,15 @@ ingress:
   enabled: false
   className: ""
   annotations: {}
+    # -- When using the nginx ingress controller you should increase the
+    # -- proxy_buffer_size value, especially if you are using a personal access
+    # -- token to connect the importer to Firefly III. Otherwise the ingress
+    # -- controller will probably only serve you a "502 Bad Gateway" error
+    # -- when accessing the importer web UI and the ingress controller logs
+    # -- will show an error like "upstream sent too big header while reading
+    # -- response header from upstream". This is because the request headers
+    # -- get quite big when using a personal access token.
+    # nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
