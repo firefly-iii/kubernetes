@@ -29,10 +29,10 @@ config:
   # -- Directly defined environment variables. Use this for non-secret configuration values.
   env:
     DB_HOST: "firefly-db"
-    #DB_CONNECTION: pgsql
-    #DB_PORT: "5432"
-    #DB_DATABASE: firefly
-    #DB_USERNAME: firefly
+    # DB_CONNECTION: pgsql
+    # DB_PORT: "5432"
+    # DB_DATABASE: firefly
+    # DB_USERNAME: firefly
     DEFAULT_LANGUAGE: "en_US"
     DEFAULT_LOCALE: "equal"
     TZ: "Europe/Amsterdam"
