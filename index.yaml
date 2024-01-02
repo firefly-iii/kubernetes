@@ -67,6 +67,22 @@ entries:
     version: 0.0.4
   firefly-iii:
   - apiVersion: v2
+    created: "2024-01-02T07:06:37.859470729Z"
+    description: Installs Firefly III
+    digest: 3bd6ff3c54d27d0996f41b75cee7c04238b82b93bdd2673e6fc44a5e62c6a11f
+    home: https://www.firefly-iii.org/
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-iii
+    sources:
+    - https://github.com/firefly-iii/firefly-iii/
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-1.7.0/firefly-iii-1.7.0.tgz
+    version: 1.7.0
+  - apiVersion: v2
     created: "2023-12-31T11:55:56.70045341Z"
     description: Installs Firefly III
     digest: a431da8d8005ad186794b5bdcb6588875d93e432efa8e1836acb8373387cf36e
@@ -603,4 +619,4 @@ entries:
     urls:
     - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
     version: 1.1.1
-generated: "2023-12-31T11:55:56.700610922Z"
+generated: "2024-01-02T07:06:37.859632612Z"
