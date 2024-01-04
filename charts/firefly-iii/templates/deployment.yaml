@@ -45,6 +45,8 @@ spec:
         {{- end }}
         {{- if or (.Values.config.env) (.Values.config.existingSecret) }}
         envFrom:
+          - secretRef:
+              name: {{ template "firefly-iii.fullname" . }}-app-key
           {{- if .Values.config.env }}
           - configMapRef:
               name: {{ template "firefly-iii.fullname" . }}
