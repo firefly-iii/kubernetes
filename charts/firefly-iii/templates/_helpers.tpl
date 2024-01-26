@@ -68,10 +68,14 @@ In order to NOT create a new key for each upgrade a check to the secret is done,
 if secret exists, use previous values, if not, create a new key
 */}}
 {{- define "firefly-iii.app-key" -}}
-  {{- $secret_key := lookup "v1" "Secret" .Release.Namespace (printf "%s-app-key" ( include "firefly-iii.fullname" . )) -}}
-  {{- if $secret_key -}}
-    {{ $secret_key.data.APP_KEY | b64dec }}
+  {{- if .Values.secrets.appKey -}}
+    {{ .Values.secrets.appKey }}
   {{- else -}}
-    {{- randAlphaNum 32 | nospace -}}
+    {{- $secret_key := lookup "v1" "Secret" .Release.Namespace (printf "%s-app-key" ( include "firefly-iii.fullname" . )) -}}
+    {{- if $secret_key -}}
+      {{ $secret_key.data.APP_KEY | b64dec }}
+    {{- else -}}
+      {{- randAlphaNum 32 | nospace -}}
+    {{- end }}
   {{- end }}
 {{- end }}
