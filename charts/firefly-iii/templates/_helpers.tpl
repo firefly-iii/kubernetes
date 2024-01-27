@@ -69,7 +69,7 @@ if secret exists, use previous values, if not, create a new key
 */}}
 {{- define "firefly-iii.app-key" -}}
   {{- if .Values.secrets.appKey -}}
-    {{ .Values.secrets.appKey }}
+    {{ include "firefly-iii.validate-app-key" . | required "appKey needs to be exactly 32 characters" }}
   {{- else -}}
     {{- $secret_key := lookup "v1" "Secret" .Release.Namespace (printf "%s-app-key" ( include "firefly-iii.fullname" . )) -}}
     {{- if $secret_key -}}
@@ -79,3 +79,13 @@ if secret exists, use previous values, if not, create a new key
     {{- end }}
   {{- end }}
 {{- end }}
+
+{{/*
+Validate if length of APP_KEY is 32 characters
+*/}}
+{{- define "firefly-iii.validate-app-key" -}}
+  {{ $length := len .Values.secrets.appKey }}
+  {{- if eq 32 $length }}
+    {{ .Values.secrets.appKey }}
+  {{- end -}}
+{{- end -}}
