@@ -44,7 +44,7 @@ secrets:
     APP_PASSWORD: "CHANGE_ENCRYPT_ME"
     DB_PASSWORD: "CHANGE_ENCRYPT_ME"
   # -- Statically set the APP_KEY in case this is desired over the autogeneration. Should be a random 32-character string.
-  # -- Can be generated using: `openssl rand 32`
+  # -- Can be generated using: `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
   # appKey: "CHANGE_ME"
 
 # -- A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/).

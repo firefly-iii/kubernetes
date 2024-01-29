@@ -85,7 +85,7 @@ Validate if length of APP_KEY is 32 characters
 */}}
 {{- define "firefly-iii.validate-app-key" -}}
   {{ $length := len .Values.secrets.appKey }}
-  {{- if eq 32 $length }}
-    {{ .Values.secrets.appKey }}
+  {{- if eq 32 $length -}}
+    {{- .Values.secrets.appKey -}}
   {{- end -}}
 {{- end -}}
