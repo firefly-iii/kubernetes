@@ -8,6 +8,8 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  strategy:
+    type: {{ default "RollingUpdate" .Values.deploymentStrategyType }}
   selector:
     matchLabels:
       {{- include "firefly-iii.selectorLabels" . | nindent 6 }}

@@ -1,4 +1,5 @@
 replicaCount: 1
+deploymentStrategyType: RollingUpdate
 
 image:
   repository: "fireflyiii/core"
