@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.7.4](https://img.shields.io/badge/Version-1.7.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.8.0](https://img.shields.io/badge/Version-1.8.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -106,6 +106,7 @@ ingress:
 | cronjob.restartPolicy | string | `"OnFailure"` | How to treat failed jobs |
 | cronjob.schedule | string | `"0 3 * * *"` | When to run the CronJob. Defaults to 03:00 as this is when Firefly III executes regular tasks. |
 | cronjob.successfulJobsHistoryLimit | int | `3` | How many pods to keep around for successful jobs |
+| deploymentStrategyType | string | `"RollingUpdate"` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
