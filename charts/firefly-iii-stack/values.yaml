@@ -7,8 +7,7 @@ firefly-db:
     pullPolicy: IfNotPresent
 
   storage:
-    class: nfs-client
-    accessModes: ReadWriteMany
+    class: ~
     dataSize: 1Gi
 
   # environment variables
