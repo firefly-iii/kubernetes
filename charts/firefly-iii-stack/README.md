@@ -109,8 +109,8 @@ For every dependency, replace `repository: https://firefly-iii.github.io/kuberne
 | firefly-db.image.pullPolicy | string | `"IfNotPresent"` |  |
 | firefly-db.image.repository | string | `"postgres"` |  |
 | firefly-db.image.tag | string | `"10-alpine"` |  |
-| firefly-db.storage.accessModes | string | `"ReadWriteMany"` |  |
-| firefly-db.storage.class | string | `"nfs-client"` |  |
+| firefly-db.storage.accessModes | string | `nil` |  |
+| firefly-db.storage.class | string | `nil` |  |
 | firefly-db.storage.dataSize | string | `"1Gi"` |  |
 | firefly-iii.enabled | bool | `true` | Set to false to not deploy Firefly III |
 | importer.enabled | bool | `true` | Set to false to not deploy the importer |
