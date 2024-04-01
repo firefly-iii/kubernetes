@@ -7,8 +7,8 @@ firefly-db:
     pullPolicy: IfNotPresent
 
   storage:
-    class: nfs-client
-    accessModes: ReadWriteMany
+    class: ~
+    accessModes: ~  # Change as needed for your storageClass https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
     dataSize: 1Gi
 
   # environment variables
