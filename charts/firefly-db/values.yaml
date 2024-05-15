@@ -11,8 +11,11 @@ storage:
   existingClaim: ""
 
 backup:
+  # Set to false to disable periodic backup and backup on helm hooks
+  enabled: true
   # There are two possible backup destinations currently implemented, http and pvc
   destination: http
+  schedule: "0 3 * * *"
   pvc:
     class: ~
     accessModes: ReadWriteOnce
@@ -28,11 +31,9 @@ configs:
   DBPORT: "5432"
   DBNAME: firefly
   DBUSER: firefly
-  TZ: Europe/Amsterdan
+  TZ: Europe/Amsterdam
   POSTGRES_HOST_AUTH_METHOD: trust
   POSTGRES_USER: firefly
   POSTGRES_PASSWORD: ""
     # -- Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in configs
   existingSecret: ""
-
-backupSchedule: "0 3 * * *"

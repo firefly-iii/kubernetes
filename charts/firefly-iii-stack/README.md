@@ -96,7 +96,7 @@ For every dependency, replace `repository: https://firefly-iii.github.io/kuberne
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| firefly-db.backupSchedule | string | `"0 3 * * *"` |  |
+| firefly-db.backup.schedule | string | `"0 3 * * *"` |  |
 | firefly-db.configs.BACKUP_URL | string | `""` |  |
 | firefly-db.configs.DBHOST | string | `"firefly-firefly-db"` |  |
 | firefly-db.configs.DBNAME | string | `"firefly"` |  |

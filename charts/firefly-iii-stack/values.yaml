@@ -1,28 +1,8 @@
 firefly-db:
   # if you set this to false it will not be installed
   enabled: true
-  image:
-    repository: postgres
-    tag: 10-alpine
-    pullPolicy: IfNotPresent
-
-  storage:
-    class: ~
-    accessModes: ReadWriteOnce  # Change as needed for your storageClass https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-    dataSize: 1Gi
-
-  # environment variables
   configs:
-    RESTORE_URL: ""
-    BACKUP_URL: ""
     PGPASSWORD: "YOURDBPASSWORD"
-    DBHOST: firefly-firefly-db
-    DBPORT: "5432"
-    DBNAME: firefly
-    DBUSER: firefly
-    TZ: Europe/Berlin
-
-  backupSchedule: "0 3 * * *"
 
 firefly-iii:
   # -- Set to false to not deploy Firefly III
