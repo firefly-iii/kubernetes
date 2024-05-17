@@ -1,0 +1,38 @@
+firefly-db:
+  # environment variables
+  configs:
+    POSTGRES_USER: firefly
+    PGPASSWORD: wO9wrXo7fESnUsFh
+    TZ: US/Eastern
+  backup:
+    enabled: false
+
+firefly-iii:
+  config:
+    env:
+      DB_HOST: hl-fireflyiii-firefly-db
+      DB_CONNECTION: pgsql
+      DB_PORT: 5432
+      DB_DATABASE: firefly
+      DB_USERNAME: firefly
+      TZ: US/Eastern
+  image:
+    tag: version-6.1.15
+  ingress:
+    enabled: true
+    hosts:
+      - 'jam.jelly.io'
+
+importer:
+  fireflyiii:
+    url: hl-fireflyiii-firefly-iii
+    vanityUrl: "http://jam.jelly.io:80"
+  config:
+    env:
+      TZ: US/Eastern
+  image:
+    tag: version-1.5.2
+  ingress:
+    enabled: true
+    hosts:
+      - 'import.jam.jelly.io'
