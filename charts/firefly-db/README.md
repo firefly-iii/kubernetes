@@ -51,7 +51,7 @@ storage:
 | configs.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in configs |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"postgres"` |  |
-| image.tag | string | `"10-alpine"` |  |
+| image.tag | string | `"10-alpine"` | Should containe alpine if you use backup.destination "http" |
 | storage.accessModes | string | `"ReadWriteOnce"` |  |
 | storage.class | string | `nil` |  |
 | storage.dataSize | string | `"1Gi"` |  |
