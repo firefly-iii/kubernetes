@@ -24,15 +24,21 @@ spec:
       {{- end }}
       echo "done"
     volumeMounts:
+      {{- with .Values.backup.extraVolumeMounts }}
+        {{- toYaml . | nindent 10 }}
+      {{- end }}
+      {{- if .Values.backup.pvc.enabled }}
       - name: backup-storage
         mountPath: /var/lib/backup
+      {{- end }}
   restartPolicy: Never
   volumes:
+    {{- with .Values.backup.extraVolumes }}
+      {{- toYaml . | nindent 2 }}
+    {{- end }}
+    {{- if .Values.backup.pvc.enabled }}
     - name: backup-storage
-      {{- if eq .Values.backup.destination "pvc" }}
       persistentVolumeClaim:
         claimName: {{ default (printf "%s-%s" (include "firefly-db.fullname" .) "backup-storage-claim") .Values.backup.pvc.existingClaim }}
-      {{- else }}
-      emptyDir: {}
-      {{- end }}
+    {{- end }}
 {{ end }}

@@ -4,6 +4,7 @@ image:
   pullPolicy: IfNotPresent
 
 storage:
+  enabled: true
   class: ~
   accessModes: ReadWriteOnce
   dataSize: 1Gi
@@ -14,11 +15,14 @@ backup:
   # There are two possible backup destinations currently implemented, http and pvc
   destination: http
   pvc:
+    enabled: false
     class: ~
     accessModes: ReadWriteOnce
     dataSize: 1Gi
     # -- Use an existing PersistentVolumeClaim, overrides values above
     existingClaim: ""
+  extraVolumeMounts: []
+  extraVolumes: []
 
 configs:
   RESTORE_URL: ""
@@ -36,3 +40,6 @@ configs:
   existingSecret: ""
 
 backupSchedule: "0 3 * * *"
+
+extraVolumeMounts: []
+extraVolumes: []
