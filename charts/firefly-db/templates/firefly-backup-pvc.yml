@@ -1,4 +1,4 @@
-{{- if and (eq .Values.backup.destination "pvc") (eq .Values.backup.pvc.existingClaim "") }}
+{{- if and (.Values.backup.pvc.enabled) (eq .Values.backup.pvc.existingClaim "") }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -10,9 +10,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  {{- with .Values.backup.pvc.class }}
-  storageClassName: {{ . }}
-  {{- end }}
+  storageClassName: {{ .Values.backup.pvc.class }}
   accessModes:
     - {{ .Values.backup.pvc.accessModes }}
   resources:
