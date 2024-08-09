@@ -31,8 +31,10 @@ helm repo update
 and then install it with
 
 ```sh
-helm install firefly-iii firefly-iii/firefly-iii-stack
+helm install firefly-iii firefly-iii/firefly-iii-stack --set storage.accessModes=ReadWriteOnce
 ```
+
+Change as needed for your storageClass https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 
 For detailed documentation on the charts, check out the [`charts` directory in firefly-iii/kubernetes](https://github.com/firefly-iii/kubernetes/tree/main/charts).
 
