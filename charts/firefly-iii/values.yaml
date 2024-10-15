@@ -4,7 +4,7 @@ deploymentStrategyType: RollingUpdate
 image:
   repository: "fireflyiii/core"
   pullPolicy: IfNotPresent
-  tag: version-6.1.1
+  tag: version-6.1.21
 
 imagePullSecrets: []
 nameOverride: ""

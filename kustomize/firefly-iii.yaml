@@ -52,7 +52,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: fireflyiii/core
+      - image: fireflyiii/core:version-6.1.21
         name: firefly-iii
         env:
         - name: APP_ENV
