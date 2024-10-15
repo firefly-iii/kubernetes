@@ -1,6 +1,6 @@
 # importer
 
-![Version: 1.3.1](https://img.shields.io/badge/Version-1.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Deploys the importer chart for Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -48,7 +48,7 @@ When a release introduces breaking changes, this section outlines the manual act
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"fireflyiii/data-importer"` |  |
-| image.tag | string | `"version-0.8.0"` |  |
+| image.tag | string | `"version-1.5.6"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |

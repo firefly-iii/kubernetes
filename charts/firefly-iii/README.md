@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.8.1](https://img.shields.io/badge/Version-1.8.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.8.2](https://img.shields.io/badge/Version-1.8.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -15,7 +15,7 @@ Installs Firefly III
 
 ## Setting environment variables from additional ConfigMaps and Secrets
 
-This enables a simplified syntax to set envirnoment variables from a ConfigMap or Secret:
+This enables a simplified syntax to set environment variables from a ConfigMap or Secret:
 
 ```yaml
 envValueFrom:
@@ -112,7 +112,7 @@ ingress:
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"fireflyiii/core"` |  |
-| image.tag | string | `"version-6.1.1"` |  |
+| image.tag | string | `"version-6.1.21"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |

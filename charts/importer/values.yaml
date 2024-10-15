@@ -46,7 +46,7 @@ additionalVolumes: []
 image:
   repository: fireflyiii/data-importer
   pullPolicy: IfNotPresent
-  tag: "version-0.8.0"
+  tag: "version-1.5.6"
 
 imagePullSecrets: []
 nameOverride: ""

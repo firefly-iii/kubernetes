@@ -34,7 +34,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: fireflyiii/data-importer:version-0.5.0
+      - image: fireflyiii/data-importer:version-1.5.6
         name: firefly-iii-importer
         env:
         - name: FIREFLY_III_ACCESS_TOKEN
