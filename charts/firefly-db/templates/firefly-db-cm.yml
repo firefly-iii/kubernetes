@@ -1,3 +1,4 @@
+{{- if not .Values.configs.existingSecret }}  
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -11,4 +12,5 @@ metadata:
 data:
 {{- range $key, $value := .Values.configs }}
   {{ $key }}: {{ $value | quote }}
+{{- end }}
 {{- end }}
