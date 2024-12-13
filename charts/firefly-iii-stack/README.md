@@ -16,7 +16,7 @@ Installs Firefly III stack (db, app, importer)
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://firefly-iii.github.io/kubernetes/ | firefly-db | 0.2.2 |
+| https://firefly-iii.github.io/kubernetes/ | firefly-db | 0.2.3 |
 | https://firefly-iii.github.io/kubernetes/ | firefly-iii | 1.8.2 |
 | https://firefly-iii.github.io/kubernetes/ | importer | 1.4.0 |
 
