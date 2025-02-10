@@ -1,10 +1,19 @@
+global:
+  image:
+    # -- if set it will overwrite all registry entries
+    registry:
+    # -- if set it will overwrite all pullPolicy
+    pullPolicy:
+
 replicaCount: 1
 deploymentStrategyType: RollingUpdate
 
 image:
+  registry: "docker.io"
   repository: "fireflyiii/core"
   pullPolicy: IfNotPresent
-  tag: version-6.1.21
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -80,9 +89,10 @@ cronjob:
   restartPolicy: OnFailure
 
   image:
+    registry: docker.io
     repository: curlimages/curl
     pullPolicy: IfNotPresent
-    tag: 7.81.0
+    tag: 8.12.0
 
   imagePullSecrets: []
 

@@ -1,12 +1,14 @@
 apiVersion: v2
 name: firefly-iii
-version: 1.8.2
 description: Installs Firefly III
-type: application
 home: https://www.firefly-iii.org/
+icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+type: application
+version: 1.9.0
+# renovate: image=docker.io/fireflyiii/core
+appVersion: 6.2.5
 sources:
   - https://github.com/firefly-iii/firefly-iii/
 maintainers:
   - name: morremeyer
     email: firefly-iii@mor.re
-icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
