@@ -46,8 +46,10 @@ spec:
               {{- with .Values.cronjob.securityContext }}
               securityContext: {{- toYaml . | nindent 16 }}
               {{- end }}
-              image: "{{ .Values.cronjob.image.repository }}:{{ .Values.cronjob.image.tag }}"
-              imagePullPolicy: {{ .Values.cronjob.image.pullPolicy }}
+              {{- with .Values.cronjob.image }}
+              image: "{{ coalesce $.Values.global.image.registry .registry }}/{{ .repository }}:{{ .tag }}"
+              imagePullPolicy: {{ coalesce $.Values.global.image.pullPolicy .pullPolicy }}
+              {{- end }}
               {{- /* Check if both the token and the existingSecret are defined and fail (this would lead to invalid configuration) */ -}}
               {{- if and (.Values.cronjob.auth.token) (.Values.cronjob.auth.existingSecret) }}
               {{- fail "You must only define one of .Values.cronjob.auth.token or .Values.cronjob.auth.existingSecret, not both!" }}
