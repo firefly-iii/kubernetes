@@ -95,6 +95,23 @@ entries:
     version: 0.0.4
   firefly-iii:
   - apiVersion: v2
+    appVersion: 6.2.9
+    created: "2025-03-05T11:19:49.814004206Z"
+    description: Installs Firefly III
+    digest: 299de8be2af1e19eed33a4c775715e642ebed224e84ba1492b0f4cd6267db463
+    home: https://www.firefly-iii.org/
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-iii
+    sources:
+    - https://github.com/firefly-iii/firefly-iii/
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-1.9.1/firefly-iii-1.9.1.tgz
+    version: 1.9.1
+  - apiVersion: v2
     appVersion: 6.2.5
     created: "2025-02-12T10:55:19.1843964Z"
     description: Installs Firefly III
@@ -804,6 +821,22 @@ entries:
     version: 0.4.1
   importer:
   - apiVersion: v2
+    created: "2025-03-05T11:19:49.981028895Z"
+    description: Deploys the importer chart for Firefly III
+    digest: 072887d94ea7147b6ed30de94ea5bb82ef188537f629982fb5a3367251c64a6f
+    home: https://www.firefly-iii.org/
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: importer
+    sources:
+    - https://github.com/firefly-iii/data-importer
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.4.1/importer-1.4.1.tgz
+    version: 1.4.1
+  - apiVersion: v2
     created: "2024-10-15T10:52:03.170239092Z"
     description: Deploys the importer chart for Firefly III
     digest: 87596f4f346c03a4aad79cca1af1b762ac0dea263c5e4ed08d147e41e04fdf99
@@ -908,4 +941,4 @@ entries:
     urls:
     - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
     version: 1.1.1
-generated: "2025-02-14T06:29:28.921997626Z"
+generated: "2025-03-05T11:19:49.981283359Z"
