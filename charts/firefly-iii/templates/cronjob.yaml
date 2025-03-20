@@ -7,7 +7,7 @@ apiVersion: batch/v1beta1
 {{- end }}
 kind: CronJob
 metadata:
-  name: {{ include "firefly-iii.fullname" . }}
+  name: {{ include "firefly-iii.fullname" . }}-cronjob
   labels:
     {{- include "firefly-iii.labels" . | nindent 4 }}
     {{- with .Values.labels }}
@@ -42,7 +42,7 @@ spec:
           securityContext: {{- toYaml . | nindent 12 }}
           {{- end }}
           containers:
-            - name: {{ .Chart.Name }}
+            - name: {{ .Chart.Name }}-cronjob
               {{- with .Values.cronjob.securityContext }}
               securityContext: {{- toYaml . | nindent 16 }}
               {{- end }}
