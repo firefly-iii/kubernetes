@@ -177,3 +177,22 @@ extraVolumeMounts: []
   # - name: db-tls-firefly
   #   mountPath: /db-cert
   #   readOnly: true
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: http
+readinessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 15
+  timeoutSeconds: 1
+startupProbe:
+  httpGet:
+    path: /health
+    port: http
+  # Give the app 30 x 10 = 300s to startup
+  failureThreshold: 30
+  periodSeconds: 10
+
