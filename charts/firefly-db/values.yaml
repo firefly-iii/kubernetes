@@ -36,3 +36,5 @@ configs:
   existingSecret: ""
 
 backupSchedule: "0 3 * * *"
+
+nodeSelector: {}
