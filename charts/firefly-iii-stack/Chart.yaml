@@ -4,10 +4,10 @@ description: Installs Firefly III stack (db, app, importer)
 home: https://github.com/firefly-iii/kubernetes
 icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
 type: application
-version: 0.8.3
+version: 0.8.4
 dependencies:
   - name: firefly-db
-    version: 0.2.4
+    version: 0.2.5
     condition: firefly-db.enabled
     repository: https://firefly-iii.github.io/kubernetes/
   - name: firefly-iii
