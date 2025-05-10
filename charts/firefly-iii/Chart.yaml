@@ -4,9 +4,9 @@ description: Installs Firefly III
 home: https://www.firefly-iii.org/
 icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
 type: application
-version: 1.9.3
+version: 1.9.4
 # renovate: image=docker.io/fireflyiii/core
-appVersion: 6.2.9
+appVersion: 6.2.12
 sources:
   - https://github.com/firefly-iii/firefly-iii/
 maintainers:
