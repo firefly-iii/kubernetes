@@ -7,7 +7,7 @@ type: application
 version: 0.8.5
 dependencies:
   - name: firefly-db
-    version: 0.2.5
+    version: 0.2.4
     condition: firefly-db.enabled
     repository: https://firefly-iii.github.io/kubernetes/
   - name: firefly-iii
