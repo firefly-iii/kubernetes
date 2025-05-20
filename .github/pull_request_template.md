@@ -13,11 +13,11 @@ If it feels necessary to open an issue first, please do so, before you open a PR
 See also: https://docs.firefly-iii.org/explanation/support/#contributing-code
 
 -->
-
-Fixes issue # (if relevant)
+    
+This PR fixes issue # (if relevant).
 
 Changes in this pull request:
 
-- 
-- 
-- 
+-
+-
+-
