@@ -2,16 +2,16 @@ name: Helm Docs
 
 on:
   push:
-   
+
 jobs:
   helm-docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-go@v2
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
       with:
         # renovate: go-version
-        go-version: 1.17.3
+        go-version: 1.22
 
     - name: Install helm-docs
       run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
