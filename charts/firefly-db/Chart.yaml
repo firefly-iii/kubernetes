@@ -2,7 +2,7 @@ apiVersion: v2
 name: firefly-db
 description: Installs a postgres db for Firefly III
 type: application
-version: 0.2.6
+version: 0.2.7
 sources:
   - https://github.com/firefly-iii/kubernetes/tree/main/charts/firefly-db
 maintainers:
