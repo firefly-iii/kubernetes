@@ -28,7 +28,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 9Gi
 
 ---
 
@@ -82,7 +82,7 @@ spec:
           name: firefly-iii
         volumeMounts:
         - mountPath: "/var/www/html/storage/upload"
-          name: firefly-iii-upload 
+          name: firefly-iii-upload
         imagePullPolicy: Always
       volumes:
         - name: firefly-iii-upload
