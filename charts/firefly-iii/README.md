@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.9.4](https://img.shields.io/badge/Version-1.9.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.9.4](https://img.shields.io/badge/Version-1.9.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.2.12](https://img.shields.io/badge/AppVersion-6.2.12-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -15,7 +15,7 @@ Installs Firefly III
 
 ## Setting environment variables from additional ConfigMaps and Secrets
 
-This enables a simplified syntax to set environment variables from a ConfigMap or Secret:
+This enables a simplified syntax to set envirnoment variables from a ConfigMap or Secret:
 
 ```yaml
 envValueFrom:
@@ -95,7 +95,7 @@ ingress:
 | config.env | object | `{"DB_HOST":"firefly-db","DEFAULT_LANGUAGE":"en_US","DEFAULT_LOCALE":"equal","TRUSTED_PROXIES":"**","TZ":"Europe/Amsterdam"}` | Directly defined environment variables. Use this for non-secret configuration values. |
 | config.envValueFrom | object | `{}` | Set environment variables from configMaps or Secrets |
 | config.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in config.env |
-| cronjob | object | `{"affinity":{},"annotations":{},"auth":{"existingSecret":"","secretKey":"token","token":""},"enabled":false,"failedJobsHistoryLimit":1,"image":{"pullPolicy":"IfNotPresent","repository":"curlimages/curl","tag":"7.81.0"},"imagePullSecrets":[],"nodeSelector":{},"podAnnotations":{},"podSecurityContext":{},"resources":{},"restartPolicy":"OnFailure","schedule":"0 3 * * *","securityContext":{},"successfulJobsHistoryLimit":3,"tolerations":[]}` | A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/). |
+| cronjob | object | `{"affinity":{},"annotations":{},"auth":{"existingSecret":"","secretKey":"token","token":""},"enabled":false,"failedJobsHistoryLimit":1,"image":{"pullPolicy":"IfNotPresent","registry":"docker.io","repository":"curlimages/curl","tag":"8.12.0"},"imagePullSecrets":[],"nodeSelector":{},"podAnnotations":{},"podSecurityContext":{},"resources":{},"restartPolicy":"OnFailure","schedule":"0 3 * * *","securityContext":{},"successfulJobsHistoryLimit":3,"tolerations":[]}` | A cronjob for [recurring Firefly III tasks](https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/). |
 | cronjob.annotations | object | `{}` | Annotations for the CronJob |
 | cronjob.auth | object | `{"existingSecret":"","secretKey":"token","token":""}` | Authorization for the CronJob. See https://docs.firefly-iii.org/firefly-iii/advanced-installation/cron/#request-a-page-over-the-web |
 | cronjob.auth.existingSecret | string | `""` | The name of a secret containing a data.token field with the cronjob token |
@@ -110,15 +110,20 @@ ingress:
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
+| global.image.pullPolicy | string | `nil` | if set it will overwrite all pullPolicy |
+| global.image.registry | string | `nil` | if set it will overwrite all registry entries |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"fireflyiii/core"` |  |
-| image.tag | string | `"version-6.2.12"` |  |
+| image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts[0] | string | `"chart-example.local"` |  |
 | ingress.tls | list | `[]` |  |
+| livenessProbe.httpGet.path | string | `"/health"` |  |
+| livenessProbe.httpGet.port | string | `"http"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | persistence.accessModes | string | `"ReadWriteOnce"` |  |
@@ -128,10 +133,18 @@ ingress:
 | persistence.storageClassName | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| readinessProbe.httpGet.path | string | `"/health"` |  |
+| readinessProbe.httpGet.port | string | `"http"` |  |
+| readinessProbe.initialDelaySeconds | int | `15` |  |
+| readinessProbe.timeoutSeconds | int | `1` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secrets | object | `{"env":{"APP_PASSWORD":"CHANGE_ENCRYPT_ME","DB_PASSWORD":"CHANGE_ENCRYPT_ME"}}` | Create a new Secret from values file to store sensitive environment variables. Make sure to keep your secrets encrypted in the repository! For example, you can use the 'helm secrets' plugin (https://github.com/jkroepke/helm-secrets) to encrypt and manage secrets. If the 'config.existingSecret' value is set, a new Secret will not be created. |
 | securityContext | object | `{}` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
+| startupProbe.failureThreshold | int | `30` |  |
+| startupProbe.httpGet.path | string | `"/health"` |  |
+| startupProbe.httpGet.port | string | `"http"` |  |
+| startupProbe.periodSeconds | int | `10` |  |
 | tolerations | list | `[]` |  |
