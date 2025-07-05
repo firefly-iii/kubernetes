@@ -24,6 +24,10 @@ persistence:
   enabled: true
   storageClassName: ""
   accessModes: ReadWriteOnce
+  # volumeName: your-pv-name
+  # selector:
+  #   matchLabels:
+  #     app: my-app
   storage: 1Gi
   # -- If you want to use an existing claim, set it here
   existingClaim: ""
