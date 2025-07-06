@@ -9,7 +9,7 @@ dependencies:
   - name: firefly-db
     version: 0.2.9
     condition: firefly-db.enabled
-    repository: file://../firefly-iii-db
+    repository: file://../firefly-db
   - name: firefly-iii
     version: 1.9.9
     condition: firefly-iii.enabled
