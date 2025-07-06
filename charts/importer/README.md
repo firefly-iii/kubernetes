@@ -1,6 +1,6 @@
 # importer
 
-![Version: 1.4.2](https://img.shields.io/badge/Version-1.4.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.4.9](https://img.shields.io/badge/Version-1.4.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Deploys the importer chart for Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
