@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   firefly-db:
   - apiVersion: v2
+    created: "2025-07-06T15:53:26.729969993Z"
+    description: Installs a postgres db for Firefly III
+    digest: 9ff1a98e7a4cef1653a9f47322c58bb9bc5993333e00c2a95e1067681f385bae
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-db
+    sources:
+    - https://github.com/firefly-iii/kubernetes/tree/main/charts/firefly-db
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-db-0.2.9/firefly-db-0.2.9.tgz
+    version: 0.2.9
+  - apiVersion: v2
     created: "2024-12-12T05:22:29.740588656Z"
     description: Installs a postgres db for Firefly III
     digest: 4d17f12b960668d664b3b6be9a39d44a4ba6492e2e86b8935ddb4b1bff9ea324
@@ -94,6 +108,23 @@ entries:
     - https://github.com/firefly-iii/kubernetes/releases/download/firefly-db-0.0.4/firefly-db-0.0.4.tgz
     version: 0.0.4
   firefly-iii:
+  - apiVersion: v2
+    appVersion: 6.2.12
+    created: "2025-07-06T15:53:26.844428833Z"
+    description: Installs Firefly III
+    digest: 4e90bea14ac905b2cf1ec8713657d241d7696dc76316897346c42cca45fad709
+    home: https://www.firefly-iii.org/
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-iii
+    sources:
+    - https://github.com/firefly-iii/firefly-iii/
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-1.9.9/firefly-iii-1.9.9.tgz
+    version: 1.9.9
   - apiVersion: v2
     appVersion: 6.2.9
     created: "2025-04-19T18:32:17.112693612Z"
@@ -493,6 +524,35 @@ entries:
     version: 1.0.1
   firefly-iii-stack:
   - apiVersion: v2
+    created: "2025-07-06T15:53:26.94800054Z"
+    dependencies:
+    - condition: firefly-db.enabled
+      name: firefly-db
+      repository: file://../firefly-db
+      version: 0.2.9
+    - condition: firefly-iii.enabled
+      name: firefly-iii
+      repository: file://../firefly-iii
+      version: 1.9.9
+    - condition: importer.enabled
+      name: importer
+      repository: file://../importer
+      version: 1.4.9
+    description: Installs Firefly III stack (db, app, importer)
+    digest: 3a776fa95e4b66f099ee96ed576415e6885deb8413451562b1b72931b8f417c8
+    home: https://github.com/firefly-iii/kubernetes
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: firefly-iii-stack
+    sources:
+    - https://github.com/firefly-iii/kubernetes
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/firefly-iii-stack-0.8.7/firefly-iii-stack-0.8.7.tgz
+    version: 0.8.7
+  - apiVersion: v2
     created: "2025-02-14T06:29:28.921785829Z"
     dependencies:
     - condition: firefly-db.enabled
@@ -855,6 +915,22 @@ entries:
     version: 0.4.1
   importer:
   - apiVersion: v2
+    created: "2025-07-06T15:53:27.052924899Z"
+    description: Deploys the importer chart for Firefly III
+    digest: 484aa7ab026cde52add60c4c08639c3453c4b916cf07e2241fd9e4e0654be032
+    home: https://www.firefly-iii.org/
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: importer
+    sources:
+    - https://github.com/firefly-iii/data-importer
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.4.9/importer-1.4.9.tgz
+    version: 1.4.9
+  - apiVersion: v2
     created: "2025-03-05T11:19:49.981028895Z"
     description: Deploys the importer chart for Firefly III
     digest: 072887d94ea7147b6ed30de94ea5bb82ef188537f629982fb5a3367251c64a6f
@@ -975,4 +1051,4 @@ entries:
     urls:
     - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
     version: 1.1.1
-generated: "2025-04-19T18:32:17.112909918Z"
+generated: "2025-07-06T15:53:27.053319882Z"
