@@ -1,11 +1,10 @@
-name: Lint and release charts (testing)
+name: Lint and release charts
 
 on:
   pull_request:
   push:
     branches:
       - main
-      - pipeline-fix
 
 jobs:
   lint-firefly-db:
