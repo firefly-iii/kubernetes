@@ -21,10 +21,16 @@ spec:
       pg_dump -h $DBHOST -p $DBPORT -U $DBUSER --format=p --clean -d $DBNAME > /var/lib/backup/$DBNAME.sql
       ls -la
       {{- if eq .Values.backup.destination "http" }}
-      apk update
-      apk add curl
-      echo "uploading backup file"
-      curl -F "filename=@/var/lib/backup/${DBNAME}.sql" $BACKUP_URL
+      if [ -z "$BACKUP_URL" ]; then
+        echo "ERROR: BACKUP_URL is required when backup.destination is set to 'http'. Backup will not be uploaded, but remain in PVC."
+      else
+        apk update
+        apk add curl
+        echo "uploading backup file"
+        curl -F "filename=@/var/lib/backup/${DBNAME}.sql" $BACKUP_URL || {
+          echo "HTTP upload failed. Backup remains in PVC."
+        }
+      fi
       {{- end }}
       echo "done"
     volumeMounts:

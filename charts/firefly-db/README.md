@@ -31,7 +31,7 @@ storage:
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| backup.destination | string | `"http"` |  |
+| backup.destination | string | `"pvc"` |  |
 | backup.pvc.accessModes | string | `"ReadWriteOnce"` |  |
 | backup.pvc.class | string | `nil` |  |
 | backup.pvc.dataSize | string | `"1Gi"` |  |

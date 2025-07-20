@@ -12,7 +12,7 @@ storage:
 
 backup:
   # There are two possible backup destinations currently implemented, http and pvc
-  destination: http
+  destination: pvc
   pvc:
     class: ~
     accessModes: ReadWriteOnce
@@ -22,7 +22,7 @@ backup:
 
 configs:
   RESTORE_URL: ""
-  BACKUP_URL: ""
+  BACKUP_URL: ""  # -- Must have value if backup.destination is set to http
   PGPASSWORD: ""
   DBHOST: ""  # -- Default is the name of the postgres service
   DBPORT: "5432"
