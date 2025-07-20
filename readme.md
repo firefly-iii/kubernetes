@@ -31,7 +31,7 @@ helm repo update
 and then install it with
 
 ```sh
-helm install firefly-iii firefly-iii/firefly-iii-stack --set storage.accessModes=ReadWriteOnce
+helm install firefly-iii firefly-iii/firefly-iii-stack --set firefly-db.storage.accessModes=ReadWriteOnce
 ```
 
 Change as needed for your storageClass https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
