@@ -24,7 +24,7 @@ configs:
   RESTORE_URL: ""
   BACKUP_URL: ""
   PGPASSWORD: ""
-  DBHOST: "" # -- Default is the name of the postgres service
+  DBHOST: ""  # -- Default is the name of the postgres service
   DBPORT: "5432"
   DBNAME: firefly
   DBUSER: firefly
