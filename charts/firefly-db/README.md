@@ -38,7 +38,7 @@ storage:
 | backup.pvc.existingClaim | string | `""` | Use an existing PersistentVolumeClaim, overrides values above |
 | backupSchedule | string | `"0 3 * * *"` |  |
 | configs.BACKUP_URL | string | `""` |  |
-| configs.DBHOST | string | `"firefly-firefly-db"` |  |
+| configs.DBHOST | string | `""` |  |
 | configs.DBNAME | string | `"firefly"` |  |
 | configs.DBPORT | string | `"5432"` |  |
 | configs.DBUSER | string | `"firefly"` |  |

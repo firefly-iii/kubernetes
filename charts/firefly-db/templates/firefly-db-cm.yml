@@ -1,4 +1,4 @@
-{{- if not .Values.configs.existingSecret }}  
+{{- if not .Values.configs.existingSecret }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -11,6 +11,9 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
 {{- range $key, $value := .Values.configs }}
+  {{- if ne $key "DBHOST" }}
   {{ $key }}: {{ $value | quote }}
+  {{- end }}
 {{- end }}
+  DBHOST: {{ (default (include "firefly-db.fullname" .) .Values.configs.DBHOST) | quote }}
 {{- end }}
