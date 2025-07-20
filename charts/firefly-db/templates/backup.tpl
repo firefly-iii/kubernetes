@@ -22,13 +22,15 @@ spec:
       ls -la
       {{- if eq .Values.backup.destination "http" }}
       if [ -z "$BACKUP_URL" ]; then
-        echo "ERROR: BACKUP_URL is required when backup.destination is set to 'http'"
-        exit 1
+        echo "ERROR: BACKUP_URL is required when backup.destination is set to 'http'. Backup will not be uploaded, but remain in PVC."
+      else
+        apk update
+        apk add curl
+        echo "uploading backup file"
+        curl -F "filename=@/var/lib/backup/${DBNAME}.sql" $BACKUP_URL || {
+          echo "HTTP upload failed. Backup remains in PVC."
+        }
       fi
-      apk update
-      apk add curl
-      echo "uploading backup file"
-      curl -F "filename=@/var/lib/backup/${DBNAME}.sql" $BACKUP_URL
       {{- end }}
       echo "done"
     volumeMounts:
