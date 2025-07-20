@@ -1,4 +1,3 @@
-{{- if .Values.config.env }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,6 +6,8 @@ metadata:
     {{- include "firefly-iii.labels" . | nindent 4 }}
 data:
 {{- range $key, $value := .Values.config.env }}
+  {{- if ne $key "DB_HOST" }}
   {{ $key }}: {{ $value | quote }}
+  {{- end }}
 {{- end }}
-{{- end }}
+  DB_HOST: {{ (default (printf "%s-firefly-db" .Release.Name) .Values.config.env.DB_HOST) | quote }}
