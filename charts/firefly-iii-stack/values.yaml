@@ -16,8 +16,7 @@ firefly-db:
     RESTORE_URL: ""
     BACKUP_URL: ""
     PGPASSWORD: ""
-    #DBHOST: firefly-firefly-db
-    
+    DBHOST: "" # Default is the name of the postgres service
     DBPORT: "5432"
     DBNAME: firefly
     DBUSER: firefly
@@ -30,11 +29,7 @@ firefly-iii:
   enabled: true
   config:
     env:
-    #DB_HOST: "firefly-db"
-      DB_CONNECTION: pgsql
-      DB_PORT: "5432"
-      DB_DATABASE: firefly
-      DB_USERNAME: firefly
+      DB_HOST: ""
       DEFAULT_LANGUAGE: "en_US"
       DEFAULT_LOCALE: "equal"
       TZ: "Europe/Amsterdam"
