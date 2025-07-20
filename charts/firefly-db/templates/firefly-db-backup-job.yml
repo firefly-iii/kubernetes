@@ -13,6 +13,7 @@ metadata:
     "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
+  backoffLimit: 0
   ttlSecondsAfterFinished: 100
   parallelism: 1
   completions: 1

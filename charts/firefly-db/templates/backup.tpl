@@ -21,6 +21,10 @@ spec:
       pg_dump -h $DBHOST -p $DBPORT -U $DBUSER --format=p --clean -d $DBNAME > /var/lib/backup/$DBNAME.sql
       ls -la
       {{- if eq .Values.backup.destination "http" }}
+      if [ -z "$BACKUP_URL" ]; then
+        echo "ERROR: BACKUP_URL is required when backup.destination is set to 'http'"
+        exit 1
+      fi
       apk update
       apk add curl
       echo "uploading backup file"
