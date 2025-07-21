@@ -15,8 +15,8 @@ firefly-db:
   configs:
     RESTORE_URL: ""
     BACKUP_URL: ""
-    PGPASSWORD: "YOURDBPASSWORD"
-    DBHOST: firefly-firefly-db
+    PGPASSWORD: ""
+    DBHOST: ""  # Default is the name of the postgres service
     DBPORT: "5432"
     DBNAME: firefly
     DBUSER: firefly
@@ -27,6 +27,13 @@ firefly-db:
 firefly-iii:
   # -- Set to false to not deploy Firefly III
   enabled: true
+  config:
+    env:
+      DB_HOST: ""
+      DEFAULT_LANGUAGE: "en_US"
+      DEFAULT_LOCALE: "equal"
+      TZ: "Europe/Amsterdam"
+      TRUSTED_PROXIES: "**"
 
 importer:
   # -- Set to false to not deploy the importer
