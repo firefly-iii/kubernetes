@@ -98,11 +98,11 @@ For every dependency, replace `repository: https://firefly-iii.github.io/kuberne
 |-----|------|---------|-------------|
 | firefly-db.backupSchedule | string | `"0 3 * * *"` |  |
 | firefly-db.configs.BACKUP_URL | string | `""` |  |
-| firefly-db.configs.DBHOST | string | `"firefly-firefly-db"` |  |
+| firefly-db.configs.DBHOST | string | `""` |  |
 | firefly-db.configs.DBNAME | string | `"firefly"` |  |
 | firefly-db.configs.DBPORT | string | `"5432"` |  |
 | firefly-db.configs.DBUSER | string | `"firefly"` |  |
-| firefly-db.configs.PGPASSWORD | string | `"YOURDBPASSWORD"` |  |
+| firefly-db.configs.PGPASSWORD | string | `""` |  |
 | firefly-db.configs.RESTORE_URL | string | `""` |  |
 | firefly-db.configs.TZ | string | `"Europe/Berlin"` |  |
 | firefly-db.enabled | bool | `true` |  |
@@ -112,5 +112,10 @@ For every dependency, replace `repository: https://firefly-iii.github.io/kuberne
 | firefly-db.storage.accessModes | string | `nil` |  |
 | firefly-db.storage.class | string | `nil` |  |
 | firefly-db.storage.dataSize | string | `"1Gi"` |  |
+| firefly-iii.config.env.DB_HOST | string | `""` |  |
+| firefly-iii.config.env.DEFAULT_LANGUAGE | string | `"en_US"` |  |
+| firefly-iii.config.env.DEFAULT_LOCALE | string | `"equal"` |  |
+| firefly-iii.config.env.TRUSTED_PROXIES | string | `"**"` |  |
+| firefly-iii.config.env.TZ | string | `"Europe/Amsterdam"` |  |
 | firefly-iii.enabled | bool | `true` | Set to false to not deploy Firefly III |
 | importer.enabled | bool | `true` | Set to false to not deploy the importer |
