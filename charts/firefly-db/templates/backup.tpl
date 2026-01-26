@@ -18,10 +18,10 @@ spec:
     - |
       set -e
       echo "creating backup file"
-      pg_dump -h $DBHOST -p $DBPORT -U $DBUSER --format=p --clean -d $DBNAME > /var/lib/backup/$DBNAME.sql
+      pg_dump -h $DBHOST -p $DBPORT -U $DBUSER --format=p --clean -d $DBNAME > /var/lib/backup/$DBNAME.sql || exit 1
       {{- if eq .Values.backup.destination "pvc" }}
       gzip -c /var/lib/backup/$DBNAME.sql >/var/lib/backup/$DBNAME-$(date -Is).sql.gz
-      while ! df -P . | awk 'NR==2 && $3 / $2 > 0.8 {exit 1}'; do
+      while ! df -P /var/lib/backup/ | awk 'NR==2 && $3 / $2 > 0.8 {exit 1}'; do
         rm "$(ls -1t /var/lib/backup/$DBNAME-*.sql.gz | tail -1)" || exit 1
         sync
       done
