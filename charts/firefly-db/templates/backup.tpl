@@ -25,8 +25,9 @@ spec:
         rm "$(ls -1t /var/lib/backup/$DBNAME-*.sql.gz | tail -1)" || exit 1
         sync
       done
+      df -h /var/lib/backup/
       {{- end }}
-      ls -la
+      ls -la /var/lib/backup/
       {{- if eq .Values.backup.destination "http" }}
       if [ -z "$BACKUP_URL" ]; then
         echo "ERROR: BACKUP_URL is required when backup.destination is set to 'http'. Backup will not be uploaded, but remain in PVC."
