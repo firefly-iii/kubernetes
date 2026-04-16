@@ -1,3 +1,4 @@
+{{- if .Values.configs.RESTORE_ENABLED }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -57,3 +58,4 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+{{- end }}
