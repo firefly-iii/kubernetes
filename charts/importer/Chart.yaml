@@ -1,6 +1,7 @@
 apiVersion: v2
 name: importer
 version: 1.5.1
+appVersion: version-1.9.1
 description: Deploys the importer chart for Firefly III
 type: application
 home: https://www.firefly-iii.org/

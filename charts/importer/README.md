@@ -48,7 +48,7 @@ When a release introduces breaking changes, this section outlines the manual act
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"fireflyiii/data-importer"` |  |
-| image.tag | string | `"version-1.9.1"` |  |
+| image.tag | string | `""` | Override chart `appVersion` if set |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
