@@ -1,3 +1,4 @@
+{{- if .Values.configs.BACKUP_ENABLED }}
 {{- if and (eq .Values.backup.destination "http") (empty .Values.configs.BACKUP_URL) }}
 {{- fail "BACKUP_URL must be set when backup.destination is 'http'" }}
 {{- end }}
@@ -23,3 +24,4 @@ spec:
   completions: 1
   template:
     {{- include "backupJobSpec" . | indent 4 }}
+{{- end }}

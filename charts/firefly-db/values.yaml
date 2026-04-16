@@ -21,6 +21,8 @@ backup:
     existingClaim: ""
 
 configs:
+  RESTORE_ENABLED: true
+  BACKUP_ENABLED: true
   RESTORE_URL: ""
   BACKUP_URL: ""  # -- Must have value if backup.destination is set to http
   PGPASSWORD: ""
