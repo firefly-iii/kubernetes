@@ -37,7 +37,7 @@ storage:
 | backup.pvc.dataSize | string | `"1Gi"` |  |
 | backup.pvc.existingClaim | string | `""` | Use an existing PersistentVolumeClaim, overrides values above |
 | backupSchedule | string | `"0 3 * * *"` |  |
-| configs.BACKUP_ENABLED | bool | `true` | Enable backup hook job |
+| configs.BACKUP_ENABLED | bool | `true` |  |
 | configs.BACKUP_URL | string | `""` |  |
 | configs.DBHOST | string | `""` |  |
 | configs.DBNAME | string | `"firefly"` |  |
@@ -47,7 +47,7 @@ storage:
 | configs.POSTGRES_HOST_AUTH_METHOD | string | `"trust"` |  |
 | configs.POSTGRES_PASSWORD | string | `""` |  |
 | configs.POSTGRES_USER | string | `"firefly"` |  |
-| configs.RESTORE_ENABLED | bool | `true` | Enable restore hook job |
+| configs.RESTORE_ENABLED | bool | `true` |  |
 | configs.RESTORE_URL | string | `""` |  |
 | configs.TZ | string | `"Europe/Amsterdam"` |  |
 | configs.existingSecret | string | `""` | Set this to the name of a secret to load environment variables from. If defined, values in the secret will override values in configs |
