@@ -71,7 +71,7 @@ spec:
                 - --silent
                 - --show-error
                 - --fail
-                - "http://{{ include "firefly-iii.fullname" . }}/api/v1/cron/$(FIREFLY_III_TOKEN)"
+                - "http://{{ include "firefly-iii.fullname" . }}:{{ .Values.service.port }}/api/v1/cron/$(FIREFLY_III_TOKEN)"
               {{- with .Values.cronjob.resources }}
               resources: {{- toYaml . | nindent 16 }}
               {{- end }}
