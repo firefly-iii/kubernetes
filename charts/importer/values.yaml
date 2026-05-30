@@ -52,6 +52,28 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+livenessProbe:
+  httpGet:
+    port: http
+    scheme: HTTP
+    path: /health
+  initialDelaySeconds: 5
+  periodSeconds: 15
+  successThreshold: 1
+  failureThreshold: 3
+  timeoutSeconds: 5
+
+readinessProbe:
+  httpGet:
+    port: http
+    scheme: HTTP
+    path: /health
+  initialDelaySeconds: 5
+  periodSeconds: 15
+  successThreshold: 1
+  failureThreshold: 3
+  timeoutSeconds: 5
+
 podAnnotations: {}
 
 podSecurityContext: {}
