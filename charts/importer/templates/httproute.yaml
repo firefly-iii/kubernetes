@@ -22,7 +22,7 @@ spec:
     - backendRefs:
         - kind: Service
           name: {{ include "importer.fullname" . }}
-          port: 8080
+          port: {{ .Values.service.port }}
           weight: 1
       matches:
         - path:
