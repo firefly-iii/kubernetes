@@ -139,6 +139,8 @@ ingress:
 | readinessProbe.timeoutSeconds | int | `1` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
+| rollingUpdate.maxSurge | string | `"25%"` |  |
+| rollingUpdate.maxUnavailable | string | `"25%"` |  |
 | secrets | object | `{"env":{"APP_PASSWORD":"CHANGE_ENCRYPT_ME","DB_PASSWORD":"CHANGE_ENCRYPT_ME"}}` | Create a new Secret from values file to store sensitive environment variables. Make sure to keep your secrets encrypted in the repository! For example, you can use the 'helm secrets' plugin (https://github.com/jkroepke/helm-secrets) to encrypt and manage secrets. If the 'config.existingSecret' value is set, a new Secret will not be created. |
 | securityContext | object | `{}` |  |
 | service.port | int | `80` |  |
