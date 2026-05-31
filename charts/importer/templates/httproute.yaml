@@ -10,8 +10,8 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  hosts:
-    {{- range .Values.httpRoute.hosts }}
+  hostnames:
+    {{- range .Values.httpRoute.hostnames }}
     - {{ . | quote }}
     {{- end }}
   parentRefs:

@@ -107,7 +107,7 @@ ingress:
 httpRoute:
   enabled: false
   annotations: {}
-  hosts: []
+  hostnames: []
   parentRefs: []
 
 resources: {}
