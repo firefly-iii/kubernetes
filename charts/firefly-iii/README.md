@@ -132,6 +132,7 @@ ingress:
 | persistence.storage | string | `"1Gi"` |  |
 | persistence.storageClassName | string | `""` |  |
 | podAnnotations | object | `{}` |  |
+| podDisruptionBudget.enabled | bool | `false` |  |
 | podSecurityContext | object | `{}` |  |
 | readinessProbe.httpGet.path | string | `"/health"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |

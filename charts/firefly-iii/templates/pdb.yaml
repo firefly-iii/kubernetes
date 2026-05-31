@@ -1,0 +1,18 @@
+{{- if .Values.podDisruptionBudget.enabled -}}
+apiVersion: v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "firefly-iii.fullname" . }}
+  labels:
+    {{- include "firefly-iii.labels" . | nindent 4 }}
+spec:
+  {{- with .Values.podDisruptionBudget.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+  {{- with .Values.podDisruptionBudget.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "firefly-iii.appSelectorLabels" . | nindent 4 }}
+{{- end -}}
