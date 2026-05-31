@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "firefly-iii.selectorLabels" . | nindent 4 }}
+    {{- include "firefly-iii.appSelectorLabels" $ | nindent 4 }}

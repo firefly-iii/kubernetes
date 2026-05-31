@@ -51,6 +51,14 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Selector labels for the app pods
+*/}}
+{{- define "firefly-iii.appSelectorLabels" -}}
+{{ include  "firefly-iii.selectorLabels" . }}
+app.kubernetes.io/component: app
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "firefly-iii.serviceAccountName" -}}

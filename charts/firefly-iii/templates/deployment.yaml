@@ -12,7 +12,7 @@ spec:
     type: {{ default "RollingUpdate" .Values.deploymentStrategyType }}
   selector:
     matchLabels:
-      {{- include "firefly-iii.selectorLabels" . | nindent 6 }}
+      {{- include "firefly-iii.appSelectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
@@ -22,7 +22,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       labels:
-        {{- include "firefly-iii.selectorLabels" . | nindent 8 }}
+        {{- include "firefly-iii.appSelectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
