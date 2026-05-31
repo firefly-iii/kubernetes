@@ -83,12 +83,14 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          {{- with .Values.livenessProbe }}
           livenessProbe:
-            tcpSocket:
-              port: http
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
           readinessProbe:
-            tcpSocket:
-              port: http
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
