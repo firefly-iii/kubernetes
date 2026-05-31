@@ -47,8 +47,8 @@ When a release introduces breaking changes, this section outlines the manual act
 | fireflyiii.vanityUrl | string | `""` | The URL at which you access Firefly III. Check https://docs.firefly-iii.org/data-importer/install/configure/#configure-fidi to find out if you should set this. |
 | fullnameOverride | string | `""` |  |
 | httpRoute.annotations | object | `{}` |  |
-| httpRoute.enabled | bool | `true` |  |
-| httpRoute.hosts | list | `[]` |  |
+| httpRoute.enabled | bool | `false` |  |
+| httpRoute.hostnames | list | `[]` |  |
 | httpRoute.parentRefs | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"fireflyiii/data-importer"` |  |

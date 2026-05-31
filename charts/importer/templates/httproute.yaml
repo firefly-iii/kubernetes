@@ -11,13 +11,9 @@ metadata:
   {{- end }}
 spec:
   hostnames:
-    {{- range .Values.httpRoute.hostnames }}
-    - {{ . | quote }}
-    {{- end }}
+    {{- toYaml .Values.httpRoute.hostnames | nindent 4 }}
   parentRefs:
-    {{- range .Values.httpRoute.parentRefs }}
-    - {{ toYaml . | nindent 6 }}
-    {{- end }}
+    {{- toYaml .Values.httpRoute.parentRefs | nindent 4 }}
   rules:
     - backendRefs:
         - kind: Service
