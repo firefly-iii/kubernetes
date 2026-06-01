@@ -32,7 +32,9 @@ spec:
           {{- with .Values.cronjob.podAnnotations }}
           annotations: {{- toYaml . | nindent 12 }}
           {{- end }}
-          labels: {{- include "firefly-iii.selectorLabels" . | nindent 12 }}
+          labels:
+            {{- include "firefly-iii.selectorLabels" . | nindent 12 }}
+            app.kubernetes.io/component: cron
         spec:
           restartPolicy: {{ .Values.cronjob.restartPolicy }}
           {{- with .Values.cronjob.imagePullSecrets }}

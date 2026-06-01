@@ -22,6 +22,11 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+podDisruptionBudget:
+  enabled: false
+  # maxUnavailable: 1
+  # minAvailable: 1
+
 persistence:
   # -- If you set this to false, uploaded attachments are not stored persistently and will be lost with every restart of the pod
   enabled: true
