@@ -14,5 +14,5 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "firefly-iii.appSelectorLabels" . | nindent 4 }}
+      {{- include "firefly-iii.appSelectorLabels" . | nindent 6 }}
 {{- end -}}
