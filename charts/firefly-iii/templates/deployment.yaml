@@ -1,3 +1,4 @@
+{{- $deploymentStrategyType := default "RollingUpdate" .Values.deploymentStrategyType -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -9,7 +10,10 @@ spec:
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   strategy:
-    type: {{ default "RollingUpdate" .Values.deploymentStrategyType }}
+    type: {{ $deploymentStrategyType }}
+    {{- if (eq $deploymentStrategyType "RollingUpdate") }}
+    rollingUpdate: {{- toYaml .Values.rollingUpdate | nindent 6 }}
+    {{- end }}
   selector:
     matchLabels:
       {{- include "firefly-iii.appSelectorLabels" . | nindent 6 }}

@@ -7,6 +7,9 @@ global:
 
 replicaCount: 1
 deploymentStrategyType: RollingUpdate
+rollingUpdate:
+  maxSurge: 25%
+  maxUnavailable: 25%
 
 image:
   registry: "docker.io"
