@@ -17,7 +17,7 @@ Installs Firefly III stack (db, app, importer)
 | Repository | Name | Version |
 |------------|------|---------|
 | file://../firefly-db | firefly-db | 0.2.10 |
-| file://../firefly-iii | firefly-iii | 1.9.17 |
+| file://../firefly-iii | firefly-iii | 1.10.0 |
 | file://../importer | importer | 1.6.0 |
 
 ## Upgrading
