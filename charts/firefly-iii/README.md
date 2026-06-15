@@ -1,6 +1,6 @@
 # firefly-iii
 
-![Version: 1.9.17](https://img.shields.io/badge/Version-1.9.17-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.5.9](https://img.shields.io/badge/AppVersion-6.5.9-informational?style=flat-square)
+![Version: 1.10.0](https://img.shields.io/badge/Version-1.10.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.5.9](https://img.shields.io/badge/AppVersion-6.5.9-informational?style=flat-square)
 
 Installs Firefly III
 **Homepage:** <https://www.firefly-iii.org/>
@@ -112,6 +112,10 @@ ingress:
 | fullnameOverride | string | `""` |  |
 | global.image.pullPolicy | string | `nil` | if set it will overwrite all pullPolicy |
 | global.image.registry | string | `nil` | if set it will overwrite all registry entries |
+| httpRoute.annotations | object | `{}` |  |
+| httpRoute.enabled | bool | `false` |  |
+| httpRoute.hostnames | list | `[]` |  |
+| httpRoute.parentRefs | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"fireflyiii/core"` |  |
