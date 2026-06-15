@@ -20,8 +20,14 @@ spec:
           name: {{ include "firefly-iii.fullname" . }}
           port: {{ .Values.service.port }}
           weight: 1
+      {{- with .Values.httpRoute.filters }}
+      filters: {{- toYaml . | nindent 8 }}
+      {{- end }}
       matches:
         - path:
             type: PathPrefix
             value: /
+    {{- with .Values.httpRoute.additionalRules }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 {{- end -}}
