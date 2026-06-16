@@ -114,7 +114,7 @@ ingress:
 | global.image.registry | string | `nil` | if set it will overwrite all registry entries |
 | httpRoute.additionalRules | list | `[]` |  |
 | httpRoute.annotations | object | `{}` |  |
-| httpRoute.enabled | bool | `true` |  |
+| httpRoute.enabled | bool | `false` |  |
 | httpRoute.filters | list | `[]` |  |
 | httpRoute.hostnames | list | `[]` |  |
 | httpRoute.parentRefs | list | `[]` |  |
