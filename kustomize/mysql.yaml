@@ -45,9 +45,11 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: yobasystems/alpine-mariadb:latest
-        name: mysql
+      - image: mariadb:lts
+        name: firefly-iii-mysql
         env:
+        - name: MYSQL_DATABASE
+          value: "fireflyiii"
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
