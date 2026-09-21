@@ -16,7 +16,8 @@ spec:
     {{- toYaml .Values.httpRoute.parentRefs | nindent 4 }}
   rules:
     - backendRefs:
-        - kind: Service
+        - group: ""
+          kind: Service
           name: {{ include "firefly-iii.fullname" . }}
           port: {{ .Values.service.port }}
           weight: 1
