@@ -1449,6 +1449,23 @@ entries:
     version: 0.4.1
   importer:
   - apiVersion: v2
+    appVersion: version-2.3.5
+    created: "2026-10-24T01:41:51.871368819Z"
+    description: Deploys the importer chart for Firefly III
+    digest: 8397271fb07373339e4aa52d6ab7732bde2c9be1a318ab95bb9569f3ed1e392f
+    home: https://www.firefly-iii.org/
+    icon: https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.github/assets/img/logo-small.png
+    maintainers:
+    - email: firefly-iii@mor.re
+      name: morremeyer
+    name: importer
+    sources:
+    - https://github.com/firefly-iii/data-importer
+    type: application
+    urls:
+    - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.6.1/importer-1.6.1.tgz
+    version: 1.6.1
+  - apiVersion: v2
     appVersion: version-2.2.3
     created: "2026-05-31T11:13:15.552372951Z"
     description: Deploys the importer chart for Firefly III
@@ -1651,4 +1668,4 @@ entries:
     urls:
     - https://github.com/firefly-iii/kubernetes/releases/download/importer-1.1.1/importer-1.1.1.tgz
     version: 1.1.1
-generated: "2026-10-23T01:47:03.882149704Z"
+generated: "2026-10-24T01:41:51.871488332Z"
